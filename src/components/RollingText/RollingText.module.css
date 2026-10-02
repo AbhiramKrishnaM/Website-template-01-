@@ -1,0 +1,41 @@
+.roll {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.row {
+  display: inline-flex;
+  white-space: pre;
+}
+
+.next {
+  position: absolute;
+  inset: 100% auto auto 0;
+}
+
+.char {
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: calc(var(--i) * 18ms);
+}
+
+.roll[data-active] .char,
+:is(a, button):hover > .roll .char {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    transition: none;
+  }
+}

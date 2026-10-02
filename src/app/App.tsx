@@ -11,6 +11,9 @@ import { LangLayout } from './LangLayout'
 const ModelLab = lazy(() =>
   import('../pages/ModelLab/ModelLab').then((module) => ({ default: module.ModelLab })),
 )
+const UiLab = lazy(() =>
+  import('../pages/UiLab/UiLab').then((module) => ({ default: module.UiLab })),
+)
 
 export function App() {
   return (
@@ -33,6 +36,16 @@ export function App() {
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contact />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          {import.meta.env.DEV && (
+            <Route
+              path="dev/ui"
+              element={
+                <Suspense>
+                  <UiLab />
+                </Suspense>
+              }
+            />
+          )}
         </Route>
         <Route path="*" element={<Navigate to={`/${DEFAULT_LANG}`} replace />} />
       </Routes>

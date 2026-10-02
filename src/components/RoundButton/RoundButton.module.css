@@ -1,0 +1,22 @@
+.wrap {
+  display: inline-block;
+  padding: var(--space-2);
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  width: 8.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  text-align: center;
+  transition: background-color 0.4s ease;
+}
+
+.button:hover {
+  background: var(--accent-dark);
+}

@@ -56,3 +56,14 @@ Entry format:
 - Added dev-only model lab at `/dev/models`; all 6 models load, decode and render
 - Fixed: drei `<Html>` as a Suspense fallback crashed the tree on unmount; replaced with a DOM progress overlay
 - Updated `standards.md` (oxlint, @fontsource, config default-export exception, draco folder), `CLAUDE.md` and the reference README for the new paths
+
+## 2026-10-02 — O.LA follow-up
+- O.LA confirmed the third-party model parts may be published, on condition that some changes are made; the exact changes aren't recorded yet (todo added in section 1)
+- Text and branding to be replaced later by the user; the build uses original placeholder copy, not the reference site's text
+
+## 2026-10-02 — Shared UI components (todo section 3)
+- Added `ScrambleText` (per-letter decode on scroll or mount, layout-stable, `aria-label` with the final text), `RollingText` (hover / active letter roll), `BlurReveal`, `RoundButton` (scroll-in + magnetic pull on fine pointers), `SectionLabel`, `ConnectorLine`, `LangSwitch`, `NavLinks`
+- Added `Header` (frosted strip, nav, language switch; mobile "Menu" button + `MobileMenu` overlay) and `Footer` (wordmark, nav, email, © / privacy / O.LA credit), wired into `LangLayout` with scroll-to-top on route change
+- Added `@gsap/react` (`useGSAP`) for animation cleanup; extended the content model (email, menu, footer strings) for en and uk
+- Added `CREDITS.md` and a dev-only component lab at `/:lang/dev/ui`
+- Verified in Chrome on desktop and at 390px width; `npm run check` and build pass with no lint warnings

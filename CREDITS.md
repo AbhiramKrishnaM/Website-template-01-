@@ -1,0 +1,9 @@
+# Credits
+
+| Asset                                                                                                             | Source                                                       | Licence / permission                                                        |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| Site design and interactions (reference)                                                                          | eugeniagrab.com, by studio O.LA — https://olhalazarieva.com/ | Learning rebuild; layout and techniques only                                |
+| Flower models (`public/models/*.glb`)                                                                             | Studio O.LA                                                  | Used and renamed with permission (email to the project owner)               |
+| Third-party parts inside the models (Depositphotos texture, "brast" leaf texture, chives / artichoke base models) | See `reference-assets/README.md`                             | O.LA confirmed publishing is allowed, with requested changes still to apply |
+| Cormorant                                                                                                         | Christian Thalmann, via Fontsource                           | SIL Open Font License 1.1                                                   |
+| Inter                                                                                                             | Rasmus Andersson, via Fontsource                             | SIL Open Font License 1.1                                                   |

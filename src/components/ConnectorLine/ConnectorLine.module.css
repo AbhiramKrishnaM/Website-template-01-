@@ -1,0 +1,21 @@
+.line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 5.5rem;
+  margin-inline: auto;
+  background: var(--muted);
+  transform-origin: top;
+}
+
+.line[data-arrow]::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid var(--muted);
+  border-bottom: 1px solid var(--muted);
+  rotate: 45deg;
+}

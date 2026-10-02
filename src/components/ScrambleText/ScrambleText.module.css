@@ -1,0 +1,26 @@
+.word {
+  display: inline-block;
+  white-space: pre;
+}
+
+.char {
+  position: relative;
+  display: inline-block;
+}
+
+.char[data-state='hidden'] {
+  opacity: 0;
+}
+
+.char[data-state='scrambling'] .final {
+  visibility: hidden;
+}
+
+.char[data-state='scrambling']::after {
+  content: attr(data-glyph);
+  position: absolute;
+  inset: 0 auto auto 50%;
+  translate: -50% 0;
+  opacity: 0.55;
+  clip-path: inset(0 0 var(--clip, 0) 0);
+}

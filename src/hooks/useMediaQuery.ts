@@ -19,3 +19,7 @@ export function useReducedMotion(): boolean {
 export function useFinePointer(): boolean {
   return useMediaQuery('(pointer: fine)')
 }
+
+export function useIsMobile(): boolean {
+  return useMediaQuery('(max-width: 48rem)')
+}

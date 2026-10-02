@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  transition: color 0.4s ease;
+}
+
+.link:hover,
+.link[aria-current='page'] {
+  color: var(--accent);
+}
+
+.link[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -2px;
+  height: 1px;
+  background: currentColor;
+}

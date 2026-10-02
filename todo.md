@@ -15,11 +15,12 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 ## 1. Housekeeping
 
 - [x] Keep O.LA's permission email safe (stored on the user's phone, not in the repo)
-- [ ] Ask O.LA whether the third-party parts (Depositphotos texture, "brast" leaf, Chives / artichoke base models) can be redistributed
+- [x] Ask O.LA whether the third-party parts (Depositphotos texture, "brast" leaf, Chives / artichoke base models) can be redistributed (yes, with changes)
+- [ ] Record O.LA's requested changes in `reference-assets/README.md` and apply them
 - [x] `git init`, first commit (check `reference-assets/` is ignored)
 - [x] Check the reference site at 390px width and fill in the mobile notes in `website.md`
 - [ ] Check the Psychotherapy sticky card, About diplomas and Contact on a real phone (iframe check didn't load them)
-- [ ] Decide our own name, copy and colour tweaks (no reused text or photos)
+- [ ] Decide our own name, copy and colour tweaks (no reused text or photos) — later; original placeholder copy for now
 
 ## 2. Project setup
 
@@ -34,16 +35,17 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 
 ## 3. Shared UI components
 
-- [ ] Header: wordmark, nav links, `EN — UK` toggle
-- [ ] Header frosted strip (`backdrop-filter` blur with a fade-out mask)
-- [ ] Rolling-text hover on nav links + active-route underline
-- [ ] `RoundButton`: mauve circle, darker on hover, magnetic pull toward the cursor
-- [ ] `RoundButton` scroll-in (scale 0.6 → 1 + fade)
-- [ ] `ScrambleText`: per-letter random swaps, fixed widths, ScrollTrigger replay
-- [ ] `BlurReveal`: paragraphs fade in from blur, staggered by line
-- [ ] `SectionLabel`: thin arrow line + caps label
-- [ ] Vertical connector line that draws itself on scroll
-- [ ] Footer: wordmark, nav, email, © / privacy / credits row (credit O.LA)
+- [x] Header: wordmark, nav links, `EN — UK` toggle
+- [x] Header frosted strip (`backdrop-filter` blur with a fade-out mask)
+- [x] Rolling-text hover on nav links + active-route underline
+- [x] `RoundButton`: mauve circle, darker on hover, magnetic pull toward the cursor
+- [x] `RoundButton` scroll-in (scale 0.6 → 1 + fade)
+- [x] `ScrambleText`: per-letter random swaps, fixed widths, ScrollTrigger replay
+- [x] `BlurReveal`: paragraphs fade in from blur, staggered by line
+- [x] `SectionLabel`: thin arrow line + caps label
+- [x] Vertical connector line that draws itself on scroll
+- [x] Footer: wordmark, nav, email, © / privacy / credits row (credit O.LA)
+- [x] Mobile header: "Menu" button with Menu → Close roll and full-screen menu overlay
 
 ## 4. Preloader
 
