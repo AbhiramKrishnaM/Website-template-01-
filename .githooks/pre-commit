@@ -1,0 +1,24 @@
+#!/bin/sh
+# CHANGELOG.md is append-only: the committed version must be an exact prefix of the staged one.
+f=CHANGELOG.md
+
+fail() {
+  echo "pre-commit: $1" >&2
+  echo "pre-commit: CHANGELOG.md is append-only. Add new entries at the bottom; never edit existing ones." >&2
+  exit 1
+}
+
+git cat-file -e HEAD:"$f" 2>/dev/null || exit 0
+
+if git diff --cached --name-status -M -- "$f" | grep -q '^[DR]'; then
+  fail "CHANGELOG.md was deleted or renamed."
+fi
+
+old=$(mktemp) new=$(mktemp)
+trap 'rm -f "$old" "$new"' EXIT
+git show HEAD:"$f" > "$old"
+git show :"$f" > "$new" 2>/dev/null || fail "CHANGELOG.md is missing from the index."
+
+size=$(wc -c < "$old" | tr -d ' ')
+head -c "$size" "$new" | cmp -s - "$old" || fail "existing CHANGELOG.md content was changed."
+exit 0

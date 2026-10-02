@@ -132,3 +132,10 @@ Booleans read as questions: `isOpen`, `hasLoaded`, `canHover`.
 - Small commits with imperative messages: `Add scramble text component`.
 - No secrets, `.env` files, or `reference-assets/` in commits.
 - Before committing: lint, typecheck and build pass.
+
+## 13. Changelog
+- `CHANGELOG.md` is **append-only**. Never edit, reorder or delete an existing entry; this applies to people and AI.
+- Add new entries at the bottom, in the format shown at the top of the file.
+- To fix a wrong entry, append a correction entry.
+- Enforced by `.githooks/pre-commit`. After cloning, run `git config core.hooksPath .githooks` once.
+- Never bypass it with `git commit --no-verify`.
