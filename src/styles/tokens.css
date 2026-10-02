@@ -1,0 +1,57 @@
+:root {
+  --bg-cream: #f7f3ee;
+  --bg-blush: #fcf8f7;
+  --bg-grey: #ecebea;
+  --bg-greige: #e0dcdb;
+  --bg-rose: #d3c8ca;
+  --bg-mauve: #b5a7a8;
+  --bg-footer: #e3dad7;
+  --bg-panel-a: #f3eeea;
+  --bg-panel-b: #f2e9e5;
+
+  --ink: #1e2422;
+  --accent: #946e6c;
+  --accent-dark: #5e3a3c;
+  --muted: #8b8583;
+  --numeral: rgb(255 255 255 / 45%);
+
+  --font-display: 'Cormorant', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2.75rem;
+  --text-2xl: 5rem;
+  --text-3xl: 7.5rem;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --gutter: 3.125rem;
+
+  --header-height: 4.5rem;
+
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-header: 50;
+  --z-menu: 60;
+  --z-transition: 90;
+  --z-loader: 100;
+
+  --bp-mobile: 48rem;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --text-xl: 1.75rem;
+    --text-2xl: 1.625rem;
+    --text-3xl: 3rem;
+    --gutter: 1rem;
+    --header-height: 3rem;
+  }
+}

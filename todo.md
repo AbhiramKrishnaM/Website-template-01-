@@ -1,9 +1,10 @@
 # Eugenia Grab Clone — TODO
 
-Spec: [website.md](website.md) · Models: `assets/models/` · Originals + notes: `reference-assets/`
+Spec: [website.md](website.md) · Models: `public/models/` · Model lab: `/dev/models` (dev only) · Originals + notes: `reference-assets/`
 Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them in order.
 
 ## 0. Research (done)
+
 - [x] Walk through every page of the reference site in the browser
 - [x] Identify the stack (React, GSAP, Lenis, Three.js r148, Draco)
 - [x] Write the build spec in `website.md`
@@ -12,23 +13,27 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Rename model files and O.LA-specific names, log changes in `rename-log.md`
 
 ## 1. Housekeeping
-- [ ] Save O.LA's permission email as `reference-assets/PERMISSION.md`
+
+- [x] Keep O.LA's permission email safe (stored on the user's phone, not in the repo)
 - [ ] Ask O.LA whether the third-party parts (Depositphotos texture, "brast" leaf, Chives / artichoke base models) can be redistributed
-- [ ] `git init`, first commit (check `reference-assets/` is ignored)
-- [ ] Check the reference site at 390px width and fill in the mobile notes in `website.md`
+- [x] `git init`, first commit (check `reference-assets/` is ignored)
+- [x] Check the reference site at 390px width and fill in the mobile notes in `website.md`
+- [ ] Check the Psychotherapy sticky card, About diplomas and Contact on a real phone (iframe check didn't load them)
 - [ ] Decide our own name, copy and colour tweaks (no reused text or photos)
 
 ## 2. Project setup
-- [ ] Scaffold Vite + React + TypeScript
-- [ ] Add React Router with `/:lang/*` routes (`/en`, `/uk`) and the 4 pages + privacy policy
-- [ ] Install GSAP, ScrollTrigger, Lenis, three, @react-three/fiber, @react-three/drei
-- [ ] Wire Lenis to `gsap.ticker` and `ScrollTrigger.update`
-- [ ] Self-host Cormorant + Inter woff2 files
-- [ ] Add the design tokens from spec section 2 as CSS variables
-- [ ] Set up the Draco decoder path and test-load all 6 GLBs in a scratch scene
-- [ ] Add a `prefers-reduced-motion` hook for later sections
+
+- [x] Scaffold Vite + React + TypeScript
+- [x] Add React Router with `/:lang/*` routes (`/en`, `/uk`) and the 4 pages + privacy policy
+- [x] Install GSAP, ScrollTrigger, Lenis, three, @react-three/fiber, @react-three/drei
+- [x] Wire Lenis to `gsap.ticker` and `ScrollTrigger.update` (desktop only, like the reference)
+- [x] Self-host Cormorant + Inter (via `@fontsource`, bundled woff2)
+- [x] Add the design tokens from spec section 2 as CSS variables
+- [x] Set up the Draco decoder path and test-load all 6 GLBs in a scratch scene
+- [x] Add a `prefers-reduced-motion` hook for later sections
 
 ## 3. Shared UI components
+
 - [ ] Header: wordmark, nav links, `EN — UK` toggle
 - [ ] Header frosted strip (`backdrop-filter` blur with a fade-out mask)
 - [ ] Rolling-text hover on nav links + active-route underline
@@ -41,6 +46,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Footer: wordmark, nav, email, © / privacy / credits row (credit O.LA)
 
 ## 4. Preloader
+
 - [ ] 5×19 letter grid with brand letters hidden in row 3
 - [ ] Per-letter flicker / glyph-swap animation
 - [ ] Preload fonts, GLBs and textures; track progress
@@ -50,6 +56,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Only run on hard loads, not on in-app navigation
 
 ## 5. Ink page transition
+
 - [ ] Full-screen canvas / WebGL quad above the app
 - [ ] Noise-based ink mask with a darker "tide-line" edge
 - [ ] Cover animation (0 → 1), then swap route, then reveal (1 → 0, new seed)
@@ -58,6 +65,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Reduced-motion fallback: simple cross-fade
 
 ## 6. Glass-flower shader
+
 - [ ] Plane component that takes an image texture
 - [ ] Frosted blur + desaturation pass
 - [ ] Moving clear "refraction band" with sharper colour inside
@@ -66,6 +74,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Source / prepare our own 4 flower photos (hero, 2 CTAs, contact)
 
 ## 7. Home — hero + intro
+
 - [ ] Hero: 4-line staggered quote layout over the glass flower
 - [ ] Pin hero; scramble quote lines out on scroll
 - [ ] Hook hero scroll progress to the flower dissolve
@@ -74,6 +83,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Background colour change into the next section
 
 ## 8. Home — pinned 5-slide flowers (biggest chunk, plan ~2 weeks)
+
 - [ ] Pin the section for ~8.5 viewports, split into 5 slide ranges
 - [ ] Slide layout: flower left, heading + quote + author right
 - [ ] Giant background numerals 01–05 with cross-fade
@@ -89,6 +99,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Performance pass: frameloop on demand outside this section, DPR cap 1.5
 
 ## 9. Home — wishes → WELLNESS → ranunculus
+
 - [ ] Featured wish card: giant initial, vertical rule, heading + paragraphs
 - [ ] Grid of 5 more wishes with pale initials
 - [ ] Pick our own 6 items whose initials spell a word
@@ -100,6 +111,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Exit: word fades, flower scales up and fades to cream
 
 ## 10. Home — profile + accordion
+
 - [ ] Profile: section label, portrait clip-path reveal
 - [ ] Name, certified-specialist list with logos
 - [ ] Experience list (years | description) + "More details" button
@@ -108,6 +120,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] First item open by default
 
 ## 11. Psychotherapy page
+
 - [ ] Page title + 4 numbered panels on alternating tints
 - [ ] Sticky center image card across all panels
 - [ ] Ink-gradient wipe between card images per panel
@@ -118,6 +131,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Closing CTA with glass flower + "Book a Session"
 
 ## 12. About page
+
 - [ ] Huge split name around the portrait
 - [ ] Opposite horizontal parallax on the name lines; portrait parallax
 - [ ] Zig-zag numbered text blocks + second portrait
@@ -129,6 +143,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Closing CTA with glass flower
 
 ## 13. Contact page
+
 - [ ] Title over full-bleed glass-flower background
 - [ ] Two location columns, availability, email block
 - [ ] "Get in touch" form: name, email, country, message
@@ -139,12 +154,14 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Client-side validation messages
 
 ## 14. Language + content
+
 - [ ] i18n setup (EN + second language) with route-based switching
 - [ ] Translate all copy; check long words don't break layouts
 - [ ] Privacy policy page
 - [ ] Page titles, meta descriptions, Open Graph image, favicon
 
 ## 15. Responsive, accessibility, performance
+
 - [ ] Mobile layouts for every section (stack slides, shorten pins)
 - [ ] Tablet check (768–1024px)
 - [ ] Reduced-motion versions of scramble, ink, dissolve and pins
@@ -154,6 +171,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [ ] Cross-browser check (Chrome, Safari, Firefox)
 
 ## 16. Ship
+
 - [ ] Get answers on third-party parts, or replace them (section 1)
 - [ ] Credits page / footer credit for O.LA and any CC-BY assets
 - [ ] Deploy (Vercel / Netlify)

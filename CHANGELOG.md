@@ -40,3 +40,19 @@ Entry format:
 
 ## 2026-10-02 — CLAUDE.md
 - Added `CLAUDE.md` so new Claude Code sessions start with the project context: spec, todo and standards pointers, changelog rule, asset rules
+
+## 2026-10-02 — Housekeeping (todo section 1)
+- Permission email stays on the user's phone; removed the "save PERMISSION.md" instruction from `reference-assets/README.md`
+- Checked the reference site at phone width; added section 9 "Mobile" to `website.md` (native scroll on `.app` with no Lenis, the Menu overlay, mobile section heights, stacked layouts)
+- Psychotherapy, About and Contact couldn't be checked on mobile (loader didn't release in an iframe); added a todo to check on a real phone
+
+## 2026-10-02 — Project setup (todo section 2)
+- Scaffolded Vite 8 + React 19 + TypeScript 6 (strict) at the repo root; oxlint + Prettier; `npm run check` runs typecheck, lint and format check
+- Installed react-router 7, gsap 3.15, lenis 1.3, three r186, @react-three/fiber 9, @react-three/drei 10, @fontsource Cormorant + Inter
+- Added `/:lang` routing (en, uk) with Home, Psychotherapy, About, Contacts, Privacy policy placeholders and an unknown-language redirect
+- Added design tokens (`src/styles/tokens.css`), global styles, typed per-language content (`src/content/`), and media-query hooks (reduced motion, fine pointer)
+- Lenis wired to `gsap.ticker` and ScrollTrigger; enabled only on fine-pointer devices without reduced motion, matching the reference
+- Moved models from `assets/models/` to `public/models/`; Draco decoder copied to `public/draco/` on install (git-ignored)
+- Added dev-only model lab at `/dev/models`; all 6 models load, decode and render
+- Fixed: drei `<Html>` as a Suspense fallback crashed the tree on unmount; replaced with a DOM progress overlay
+- Updated `standards.md` (oxlint, @fontsource, config default-export exception, draco folder), `CLAUDE.md` and the reference README for the new paths

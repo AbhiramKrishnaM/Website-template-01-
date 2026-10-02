@@ -1,0 +1,31 @@
+.lab {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-cream);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  white-space: nowrap;
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+.label strong {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.status {
+  position: absolute;
+  inset: auto 0 var(--space-4);
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
