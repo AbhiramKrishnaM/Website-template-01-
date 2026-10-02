@@ -37,3 +37,6 @@ Entry format:
 ## 2026-10-02 — Append-only changelog
 - Added `CHANGELOG.md` and the `.githooks/pre-commit` hook that blocks edits to existing changelog content
 - Set `core.hooksPath` to `.githooks`
+
+## 2026-10-02 — CLAUDE.md
+- Added `CLAUDE.md` so new Claude Code sessions start with the project context: spec, todo and standards pointers, changelog rule, asset rules
