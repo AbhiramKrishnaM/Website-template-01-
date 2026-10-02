@@ -1,6 +1,7 @@
+import { PageTitle } from '../../components/PageTitle/PageTitle'
 import { useContent } from '../../content/useContent'
 
 export function Home() {
   const { pages } = useContent()
-  return <h1>{pages.home.title}</h1>
+  return <PageTitle text={pages.home.title} />
 }

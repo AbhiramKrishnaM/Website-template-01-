@@ -5,6 +5,7 @@ import { getLenis, useSmoothScroll } from '../animation/useSmoothScroll'
 import { Footer } from '../components/Footer/Footer'
 import { Header } from '../components/Header/Header'
 import { DEFAULT_LANG, isLang } from '../lib/i18n'
+import styles from './LangLayout.module.css'
 
 export function LangLayout() {
   const { lang } = useParams()
@@ -26,7 +27,7 @@ export function LangLayout() {
   return (
     <>
       <Header />
-      <main>
+      <main className={styles.main}>
         <Outlet />
       </main>
       <Footer />

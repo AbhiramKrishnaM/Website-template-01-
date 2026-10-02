@@ -67,3 +67,8 @@ Entry format:
 - Added `@gsap/react` (`useGSAP`) for animation cleanup; extended the content model (email, menu, footer strings) for en and uk
 - Added `CREDITS.md` and a dev-only component lab at `/:lang/dev/ui`
 - Verified in Chrome on desktop and at 390px width; `npm run check` and build pass with no lint warnings
+
+## 2026-10-02 — Layout fix: hidden page titles and floating footer
+- Page titles sat underneath the fixed header; added `PageTitle` (large serif heading, padded below the header, scramble on mount) and used it on every page
+- Footer rode up mid-screen on short pages; `main` now has `min-height: 100svh`
+- Checked in Chrome on `/en/contacts` and `/uk/psychotherapy`
