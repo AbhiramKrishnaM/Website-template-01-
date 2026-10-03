@@ -56,7 +56,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Exit: random letters fade, brand letters FLIP to the header logo
 - [x] Lock scroll and stop Lenis until ready
 - [x] Only run on hard loads, not on in-app navigation
-- [ ] Watch the letter flight in a visible tab and tune timings if needed (user)
+- [x] Watch the letter flight in a visible tab and tune timings if needed (user: looks good)
 
 ## 5. Ink page transition
 

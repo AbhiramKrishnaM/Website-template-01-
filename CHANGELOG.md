@@ -82,3 +82,6 @@ Entry format:
 - Moved scramble logic and styles into shared `animation/scramble.ts` and `styles/scramble.module.css` (used by ScrambleText and the preloader)
 - Runs on hard loads only; in-app navigation skips it
 - Verified with checks, build, and in Chrome by driving GSAP's ticker manually (the test tab was in a background window, which pauses animation frames); the letter flight still needs a visual check in a visible tab
+
+## 2026-10-03 — Preloader visual check
+- User watched the letter flight in a visible tab: looks good, no timing changes needed
