@@ -108,6 +108,8 @@ Analysed: 2026-10-02, desktop Chrome, viewport 1920×992 CSS px.
 
 ### 3.3 Ink page transition (`ink-transition__canvas`, 2 canvases)
 
+**Measured from the reference bundle (2026-10-03):** 5.6s round trip (5.4s under 767px), half cover with `sine.in` and half reveal with `sine.out`. The wash spreads radially from origin `[-0.16, -0.16]` (just outside the bottom-left corner). The route swaps at 94% cover. Scroll and clicks unlock 1s before the reveal ends. After the preloader, a separate 5.6s reveal spreads from origin `[0.46, 0.56]` (screen centre).
+
 **Observed**
 
 - On route click, a watercolour/ink bleed grows from the left edge, covers the screen in about 0.8 s, and the route swaps.

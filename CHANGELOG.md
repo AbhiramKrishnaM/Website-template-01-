@@ -85,3 +85,26 @@ Entry format:
 
 ## 2026-10-03 — Preloader visual check
 - User watched the letter flight in a visible tab: looks good, no timing changes needed
+
+## 2026-10-03 — Ink page transition (todo section 5)
+- Added `InkTransition`: full-screen raw WebGL canvas (`shaders/fullscreen.vert`, `shaders/ink.frag`) drawing a noise-edged watercolour wash with a brown tide line (`--tide` token) and paper grain
+- Internal link clicks are captured globally: cover (0.9s), then route swap, then reveal (1.0s) with a new noise seed; clicks blocked and Lenis stopped while covering; ignores new-tab, modifier, external, download and same-page hash links
+- Reduced motion or no WebGL: plain cream cross-fade
+- Lenis scroll-to-top on route change now uses `force: true` (a stopped Lenis ignored it)
+- Verified in Chrome by stepping GSAP's clock (background tab): mid-sweep frame, route swap behind the cover, reveal, and EN → UK switch
+
+## 2026-10-03 — Ink transition slowed to match the reference
+- User flagged the transition as too fast; read the reference bundle's settings: 5.6s round trip (5.4s on phones), cover `sine.in`, reveal `sine.out`, radial spread from just outside the bottom-left corner, unlock 1s before the reveal ends
+- Was 1.9s total with `power2.inOut` from the left edge; now uses the reference timings, eases and corner origin (`uOrigin` uniform in `ink.frag`)
+- Recorded the measured values in `website.md` section 3.3; added a todo for the reference's centre-origin ink reveal after the preloader
+
+## 2026-10-03 — Fix: scrollbar jump and repeat clicks during the ink transition
+- Scrollbar vanished during transitions: `.lenis.lenis-stopped { overflow: hidden }` in `globals.css` hid it when Lenis was stopped, shifting the layout ~15px; removed (Lenis already blocks wheel/touch while stopped) and added `scrollbar-gutter: stable` so the preloader's scroll lock can't shift the layout either
+- Links could be clicked repeatedly: since the timing change, links re-enabled 1s before the reveal finished, so a click could start a new cover over the unfinished reveal; links now stay blocked until the reveal fully ends (only scrolling resumes 1s early), and ink tweens use `overwrite: true` on a shared state object
+- Verified in Chrome: page width unchanged during a transition (1905px before and during); 8 clicks during the cover and 3 during the last second of the reveal were ignored, with exactly one navigation
+
+## 2026-10-03 — Fix: page unclickable at the end of the ink reveal
+- Cause: the previous fix kept the transition canvas catching clicks until the reveal fully ended, but the `sine.out` reveal's last ~1s is nearly invisible, so the page looked ready while clicks and the hand cursor were swallowed
+- `InkTransition` now has explicit phases (idle → cover → reveal → tail): the canvas releases the pointer and scrolling 1s before the reveal ends (as the reference does); a click in that tail starts the next cover from the ink already on screen (same noise seed, duration scaled to the remaining distance), so there is no overlap or jump
+- Clicks during the cover and the main reveal are still ignored
+- Verified in Chrome with a sampled timeline (cover 2.8s, reveal 2.8s, pointer released at ~4.9s) and a tail click that continued from 0.08 ink to the next page; real mouse input can't reach the background test tab, so the hand cursor was checked via hit-testing and computed `cursor: pointer`

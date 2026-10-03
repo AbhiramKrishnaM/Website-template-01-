@@ -57,15 +57,17 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Lock scroll and stop Lenis until ready
 - [x] Only run on hard loads, not on in-app navigation
 - [x] Watch the letter flight in a visible tab and tune timings if needed (user: looks good)
+- [ ] After the preloader, reveal the page with a 5.6s ink wash spreading from the screen centre (as the reference does)
 
 ## 5. Ink page transition
 
-- [ ] Full-screen canvas / WebGL quad above the app
-- [ ] Noise-based ink mask with a darker "tide-line" edge
-- [ ] Cover animation (0 → 1), then swap route, then reveal (1 → 0, new seed)
-- [ ] Transition context so links wait for the cover to finish
-- [ ] Scroll to top and restart ScrollTriggers after the swap
-- [ ] Reduced-motion fallback: simple cross-fade
+- [x] Full-screen canvas / WebGL quad above the app (raw WebGL, no Three.js)
+- [x] Noise-based ink mask with a darker "tide-line" edge
+- [x] Cover animation (0 → 1), then swap route, then reveal (1 → 0, new seed)
+- [x] Transition context so links wait for the cover to finish (global click capture, no Link changes needed)
+- [x] Scroll to top and restart ScrollTriggers after the swap
+- [x] Reduced-motion fallback: simple cross-fade (also used when WebGL is unavailable)
+- [ ] Watch a transition in a visible tab and tune speed / edge colour if needed (user)
 
 ## 6. Glass-flower shader
 
