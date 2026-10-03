@@ -200,3 +200,7 @@ Entry format:
 - Goal now stated as matching the reference exactly, with placeholder text
 - Added "Matching the reference" (measure the reference CSS and bundle first, record values in `website.md`, write our own code, original copy), a code map of the sections, `three/` helpers and intro phases, and how to verify in the background Chrome tab (stepping GSAP, Lenis scrolling, forcing WebGL frames, synthetic pointer events)
 - Assets note updated for the photos permission and O.LA's conditional approval of the third-party parts
+
+## 2026-10-03 — All code comments removed
+- At the user's request, removed all 46 comment lines from 15 source files (TypeScript and shaders); checks and build still pass
+- `standards.md` section 1 now says "No comments in code"; reasoning and measured values live in `website.md` and `CHANGELOG.md`

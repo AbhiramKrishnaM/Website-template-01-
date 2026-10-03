@@ -4,38 +4,7 @@ Rules for this repo. If code and this file disagree, fix one of them; don't leav
 
 ## 1. Comments
 
-**No unwanted comments and no bloat comments.** Code should explain itself through names and structure.
-
-Write a comment only when it says something the code can't:
-
-- **Why**, not what: a non-obvious decision, a workaround, a constraint.
-- **Magic numbers** in animation/shader math that came from tuning.
-- **External facts**: a browser bug, a library quirk, a link to the issue.
-
-Never write:
-
-- Comments that restate the code (`// set opacity to 0` above `opacity: 0`)
-- Section banners and dividers (`// ===== HELPERS =====`)
-- Commented-out code; delete it, git has history
-- Changelog / author / date comments (`// added by X on Monday`)
-- `TODO`s without a reason; put real tasks in `todo.md`
-- JSDoc that only repeats the parameter names and types TypeScript already shows
-- Comments addressed to the reader or a reviewer (`// note: I changed this because…`)
-
-```ts
-// ❌ bloat
-// Create the timeline
-const tl = gsap.timeline() // timeline for the hero
-// Animate the title
-tl.to(title, { opacity: 0 }) // fade out
-
-// ✅ only the non-obvious part
-const tl = gsap.timeline()
-// Lenis reports scroll a frame late; start slightly earlier so the pin doesn't jump.
-tl.to(title, { opacity: 0, delay: -0.016 })
-```
-
-Shaders follow the same rule: comment the math that isn't obvious (a remap, a tuned constant), not every line.
+**No comments in code.** This applies to TypeScript, CSS and shaders alike. Make code explain itself through names, small functions and named constants, and record reasoning, measured values and decisions in `website.md` or `CHANGELOG.md` instead.
 
 ## 2. Language & tooling
 
