@@ -20,6 +20,9 @@ export interface Content {
     privacy: string
     credit: string
   }
+  home: {
+    heroLines: string[]
+  }
   pages: {
     home: { title: string }
     psychotherapy: { title: string }

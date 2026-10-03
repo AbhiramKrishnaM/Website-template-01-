@@ -181,11 +181,20 @@ Analysed: 2026-10-02, desktop Chrome, viewport 1920×992 CSS px.
 
 ### 4.1 Hero (2153px ≈ 2.2 viewports)
 
-- **Layout:** 4-line serif quote, ~80px, staggered indents (left, right-offset, center-left, right-offset). The glass tulip sits behind it at center.
-- **Timeline** (ScrollTrigger, pinned, scrub):
-  - 0–30%: quote lines scramble out one after another, top line first.
-  - 20–70%: tulip `uDissolve` 0→1. Grain drifts up and the shape thins to a dust silhouette.
-  - 60–100%: the dandelion seed layer from section 2 starts to drift in at the top.
+**Confirmed from the reference CSS and scroll setup (2026-10-03):**
+
+- `.hero` is `230dvh` tall; `.hero__sticky` is `100dvh`, `position: sticky; top: 0; overflow: hidden`. So the hero stays pinned for ~1.3 screens of scrolling.
+- One ScrollTrigger timeline from `top top` to `bottom bottom` with `scrub: 1.4` (the animation trails the scroll by ~1.4s).
+- Quote: Cormorant ~80px (50px under 1100px, 32px under 600px), line-height ~1.15, colour `#142022`, positioned at `top: 45%` (55% on phones); separate line breaks on mobile.
+- Reduced motion: hero collapses to `100dvh` (no pin).
+
+**Observed timing (desktop walkthrough):** after ~0.5 screen of scroll only the first quote line was scrambling out and the tulip was intact; after ~1 screen the last lines were going and the tulip was mostly dust.
+
+- **Layout:** 4-line serif quote, staggered indents (left, right-offset, center-left, right-offset). The glass tulip sits behind it at center.
+- **Timeline** (pinned, scrubbed, progress 0–1 over the pinned distance):
+  - Quote lines scramble out one after another, top line first, across ~0.3–0.75.
+  - Tulip `uDissolve` ramps over ~0.2–0.95: grain drifts up and the shape thins to dust.
+  - Near the end the dandelion seed layer from section 4.2 starts to drift in.
 
 ### 4.2 Psychoanalytic intro (2426px)
 

@@ -133,3 +133,11 @@ Entry format:
 - Added lens lighting to `glass.frag`: brighter, warmer, more saturated photo inside the lens; glossy highlight toward the lower right plus a bright rim crescent; a soft halo that lifts the frost around the lens; glow scales with cursor speed (`uEnergy`); strength via `lensLight` in the look
 - Lens radius 0.14 → 0.19 and a longer trail (trail follow 3.2 → 2.2)
 - Verified in Chrome with a simulated cursor sweep (moving and resting states)
+
+## 2026-10-03 — Home hero (todo section 7, part 1)
+- User noticed the reference hero needs more scrolling before the quote and flower fade; confirmed from the reference CSS and scroll setup: `.hero` 230dvh with a sticky 100dvh inner (pinned ~1.3 screens), one timeline `top top` → `bottom bottom` with `scrub: 1.4`; recorded in `website.md` section 4.1
+- Added `pages/Home/sections/Hero`: pinned 230svh section, staggered 4-line serif quote (original placeholder text in en and uk) over the glass tulip; quote scrambles in on reveal and scrambles out line by line on scroll (and back in when scrolling up); the flower dissolve is driven by the same smoothed progress
+- Tuned to the reference walkthrough: first line leaves at ~0.36 of the pin, last at ~0.78; dissolve runs 0.3 → 1.0, so at half a screen only the first line has gone and the tulip is intact, and at one screen only the last line remains with the tulip mostly dust
+- `GlassFlower` accepts an external `dissolve` ref; `addScramble` can end in `hidden`; shared `ScrambleChars` markup now used by ScrambleText and the hero
+- Home now renders the hero instead of the placeholder title; reduced motion collapses the hero to one screen
+- Verified in Chrome at 25/38/50/77/100% through the pin

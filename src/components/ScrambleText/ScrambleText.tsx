@@ -4,8 +4,7 @@ import { useIntroRevealed } from '../../animation/intro'
 import { addScramble, setCharState } from '../../animation/scramble'
 import { useReducedMotion } from '../../hooks/useMediaQuery'
 import type { TagName } from '../../lib/polymorphic'
-import scramble from '../../styles/scramble.module.css'
-import styles from './ScrambleText.module.css'
+import { ScrambleChars } from './ScrambleChars'
 
 const CHAR_STAGGER = 0.03
 
@@ -64,21 +63,11 @@ export function ScrambleText({
     },
   )
 
-  const words = text.split(' ')
   const Tag = as as 'span'
 
   return (
     <Tag ref={ref} className={className} aria-label={text}>
-      {words.map((word, w) => (
-        <span key={w} className={styles.word} aria-hidden="true">
-          {[...word].map((char, c) => (
-            <span key={c} className={scramble.char} data-char data-state="done">
-              <span className={scramble.final}>{char}</span>
-            </span>
-          ))}
-          {w < words.length - 1 && ' '}
-        </span>
-      ))}
+      <ScrambleChars text={text} />
     </Tag>
   )
 }

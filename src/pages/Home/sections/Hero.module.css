@@ -1,0 +1,78 @@
+.hero {
+  position: relative;
+  height: 230svh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  contain: paint;
+}
+
+.flower {
+  position: absolute;
+  inset: 0;
+}
+
+.quote {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  translate: -50% -50%;
+  font-size: 5rem;
+  line-height: 1.15;
+  text-transform: none;
+  color: var(--ink);
+  pointer-events: none;
+}
+
+.line {
+  white-space: nowrap;
+}
+
+.line:nth-child(2),
+.line:nth-child(4) {
+  padding-left: 6.75em;
+}
+
+.line:nth-child(3) {
+  padding-left: 1.8em;
+}
+
+@media (max-width: 68.75rem) {
+  .quote {
+    font-size: 3.125rem;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .quote {
+    top: 55%;
+    width: calc(100% - 2.5rem);
+    font-size: 2rem;
+  }
+
+  .line {
+    white-space: normal;
+  }
+
+  .line:nth-child(n) {
+    padding-left: 0;
+  }
+
+  .line:nth-child(2),
+  .line:nth-child(4) {
+    align-self: flex-end;
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    height: 100svh;
+  }
+}

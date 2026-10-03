@@ -33,6 +33,7 @@ interface GlassFlowerProps {
   src: string
   className?: string
   dissolveOnScroll?: boolean
+  dissolve?: { current: number }
   bleed?: number
   look?: Partial<GlassLook>
 }
@@ -50,12 +51,14 @@ export function GlassFlower({
   src,
   className,
   dissolveOnScroll = false,
+  dissolve,
   bleed = 0,
   look,
 }: GlassFlowerProps) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const dissolveRef = useRef(0)
+  const ownDissolveRef = useRef(0)
+  const dissolveRef = dissolve ?? ownDissolveRef
   const introRef = useRef({ value: 0 })
   const reducedMotion = useReducedMotion()
   const finePointer = useFinePointer()
@@ -146,7 +149,7 @@ export function GlassFlower({
       watcher.disconnect()
       renderer.dispose()
     }
-  }, [src, reducedMotion, finePointer, lookKey])
+  }, [src, reducedMotion, finePointer, lookKey, dissolveRef])
 
   useGSAP(
     () => {

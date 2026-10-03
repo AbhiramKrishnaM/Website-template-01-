@@ -10,6 +10,7 @@ interface ScrambleOptions {
   minSwaps?: number
   maxSwaps?: number
   interval?: number
+  end?: CharState
 }
 
 export function setCharState(char: HTMLElement, state: CharState): void {
@@ -25,10 +26,16 @@ export function addScramble(
   tl: gsap.core.Timeline,
   char: HTMLElement,
   start: number,
-  { glyphs = LATIN, minSwaps = 4, maxSwaps = 8, interval = 0.045 }: ScrambleOptions = {},
+  {
+    glyphs = LATIN,
+    minSwaps = 4,
+    maxSwaps = 8,
+    interval = 0.045,
+    end = 'done',
+  }: ScrambleOptions = {},
 ): void {
   const swaps = gsap.utils.random(minSwaps, maxSwaps, 1)
   tl.call(setCharState, [char, 'scrambling'], start)
   for (let k = 0; k < swaps; k++) tl.call(setRandomGlyph, [char, glyphs], start + k * interval)
-  tl.call(setCharState, [char, 'done'], start + swaps * interval)
+  tl.call(setCharState, [char, end], start + swaps * interval)
 }

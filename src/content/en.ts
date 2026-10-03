@@ -22,6 +22,14 @@ export const en: Content = {
     privacy: 'Privacy policy',
     credit: 'Design credit - O.LA',
   },
+  home: {
+    heroLines: [
+      'Change rarely begins',
+      'with an answer.',
+      'It begins with the patience',
+      'to listen inward.',
+    ],
+  },
   pages: {
     home: { title: 'Home' },
     psychotherapy: { title: 'Psychotherapy' },
