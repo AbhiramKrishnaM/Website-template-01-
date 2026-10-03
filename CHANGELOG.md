@@ -190,3 +190,8 @@ Entry format:
 - User noted that in the reference the dandelion seeds come down from the top as you scroll out of the hero; ours were anchored inside the intro and rose from the bottom, only after the hero ended
 - `SeedFlight`: the seed progress now starts 0.4 screens earlier (during the tulip dissolve); each seed drops from above the screen to a resting spot (staggered), sinks slowly while the intro scrolls past, then the five landing seeds fly into their dandelion slots as before; the two extra seeds sink faster and leave through the bottom
 - Verified in Chrome: seeds entering at the top edge while the tulip is dust, spread around the intro text mid-scroll, converging on the dandelion near the cards section
+
+## 2026-10-03 — Progress circles hide as their wipe starts; card swap made robust
+- User noticed passed progress circles stayed visible as pale rings in the corner; in the reference each circle disappears as its wipe begins (the wipe grows from it at the same size and colour). Each circle now hides with its label at the start of its wipe, leaving only the upcoming slides' circles
+- Found while testing: landing exactly on a card-swap point while jumping back and forth could leave the previous slide's card showing (a GSAP callback doesn't refire when moving forward from exactly its time). The visible card is now derived from the playhead on every update instead of timeline callbacks
+- Verified in Chrome: circle states at slides 2/3/4, and the correct card after jumps to 1.6, 5.6, 2.5, 3.6, 0.2, 7.9, 4.5, 4.6

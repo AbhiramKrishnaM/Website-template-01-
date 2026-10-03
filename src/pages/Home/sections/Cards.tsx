@@ -27,7 +27,8 @@ const DIM_OPACITY = 0.3
 const WORD_DURATION = 1.05
 const WORD_STAGGER_MAX = 0.085
 
-// The wipe grows out of the progress circle for the next slide, from that circle's size to past the farthest corner.
+// The wipe grows out of the progress circle for the next slide, from that circle's size to past the farthest corner;
+// the circle itself hides as its wipe starts, so it reads as the circle swelling into the new background.
 function wipeCircle(circle: HTMLElement, sticky: HTMLElement, full: boolean): string {
   const area = sticky.getBoundingClientRect()
   const rect = circle.getBoundingClientRect()
@@ -110,6 +111,7 @@ export function Cards() {
         })
       }
 
+      let activeCard = 0
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -119,7 +121,16 @@ export function Cards() {
           invalidateOnRefresh: true,
         },
         onUpdate: () => {
-          clockRef.current.time = tl.time()
+          const time = tl.time()
+          clockRef.current.time = time
+          // The visible card follows the playhead, so jumping or reversing past a swap point can't skip one.
+          let current = 0
+          for (let k = 1; k < total; k++)
+            if (time >= UNITS_PER_SLIDE * (k - 1) + CARD_SWAP_AT) current = k
+          if (current !== activeCard) {
+            activeCard = current
+            showCard(current)
+          }
         },
       })
 
@@ -137,7 +148,7 @@ export function Cards() {
           },
           at,
         )
-          .to(labels[k - 1], { autoAlpha: 0, duration: 0.06, ease: 'none' }, at)
+          .to([circles[k - 1], labels[k - 1]], { autoAlpha: 0, duration: 0.06, ease: 'none' }, at)
           .to(cards[k - 1], { autoAlpha: 0, duration: 0.06, ease: 'none' }, at)
           .to(
             digits[k - 1],
@@ -158,11 +169,6 @@ export function Cards() {
               ease: 'sine.inOut',
             },
             at + DIGIT_IN_AT,
-          )
-          .call(
-            () => showCard(tl.scrollTrigger && tl.scrollTrigger.direction < 0 ? k - 1 : k),
-            undefined,
-            at + CARD_SWAP_AT,
           )
       }
       tl.to({}, { duration: UNITS_PER_SLIDE * (total - 1) - tl.duration() })
