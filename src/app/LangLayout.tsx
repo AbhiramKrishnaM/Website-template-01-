@@ -4,6 +4,7 @@ import { ScrollTrigger } from '../animation/gsap'
 import { getLenis, useSmoothScroll } from '../animation/useSmoothScroll'
 import { Footer } from '../components/Footer/Footer'
 import { Header } from '../components/Header/Header'
+import { Preloader } from '../components/Preloader/Preloader'
 import { DEFAULT_LANG, isLang } from '../lib/i18n'
 import styles from './LangLayout.module.css'
 
@@ -26,6 +27,7 @@ export function LangLayout() {
 
   return (
     <>
+      <Preloader />
       <Header />
       <main className={styles.main}>
         <Outlet />

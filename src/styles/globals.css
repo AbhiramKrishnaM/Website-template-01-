@@ -68,3 +68,8 @@ html.lenis body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+html[data-loading],
+html[data-loading] body {
+  overflow: hidden;
+}

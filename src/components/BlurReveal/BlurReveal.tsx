@@ -1,5 +1,6 @@
 import { useRef, type ReactNode } from 'react'
 import { gsap, useGSAP } from '../../animation/gsap'
+import { useIntroRevealed } from '../../animation/intro'
 import { DURATION, EASE } from '../../animation/tokens'
 import { useReducedMotion } from '../../hooks/useMediaQuery'
 import type { TagName } from '../../lib/polymorphic'
@@ -14,11 +15,12 @@ interface BlurRevealProps {
 export function BlurReveal({ children, as = 'div', className, stagger = 0.08 }: BlurRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
+  const revealed = useIntroRevealed()
 
   useGSAP(
     () => {
       const root = ref.current
-      if (!root || reducedMotion) return
+      if (!root || reducedMotion || !revealed) return
       gsap.from(root.children, {
         filter: 'blur(8px)',
         autoAlpha: 0,
@@ -29,7 +31,7 @@ export function BlurReveal({ children, as = 'div', className, stagger = 0.08 }: 
         scrollTrigger: { trigger: root, start: 'top 88%' },
       })
     },
-    { dependencies: [reducedMotion, stagger], scope: ref, revertOnUpdate: true },
+    { dependencies: [reducedMotion, revealed, stagger], scope: ref, revertOnUpdate: true },
   )
 
   const Tag = as as 'div'

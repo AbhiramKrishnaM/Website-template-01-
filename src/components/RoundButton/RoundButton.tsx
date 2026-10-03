@@ -1,6 +1,7 @@
 import { useRef, type ReactNode } from 'react'
 import { Link } from 'react-router'
 import { gsap, useGSAP } from '../../animation/gsap'
+import { useIntroRevealed } from '../../animation/intro'
 import { DURATION, EASE } from '../../animation/tokens'
 import { useFinePointer, useReducedMotion } from '../../hooks/useMediaQuery'
 import styles from './RoundButton.module.css'
@@ -26,11 +27,12 @@ export function RoundButton({
   const ref = useRef<HTMLDivElement>(null)
   const finePointer = useFinePointer()
   const reducedMotion = useReducedMotion()
+  const revealed = useIntroRevealed()
 
   useGSAP(
     () => {
       const wrap = ref.current
-      if (!wrap || reducedMotion) return
+      if (!wrap || reducedMotion || !revealed) return
 
       gsap.from(wrap, {
         scale: 0.6,
@@ -63,7 +65,7 @@ export function RoundButton({
         wrap.removeEventListener('pointerleave', onLeave)
       }
     },
-    { dependencies: [finePointer, reducedMotion], scope: ref, revertOnUpdate: true },
+    { dependencies: [finePointer, reducedMotion, revealed], scope: ref, revertOnUpdate: true },
   )
 
   const classes = [styles.button, className].filter(Boolean).join(' ')

@@ -72,3 +72,13 @@ Entry format:
 - Page titles sat underneath the fixed header; added `PageTitle` (large serif heading, padded below the header, scramble on mount) and used it on every page
 - Footer rode up mid-screen on short pages; `main` now has `min-height: 100svh`
 - Checked in Chrome on `/en/contacts` and `/uk/psychotherapy`
+
+## 2026-10-02 — Preloader (todo section 4)
+- Added `Preloader`: 5×19 letter grid with the site name hidden in row 3 (Latin or Cyrillic noise letters by language); letters scramble in as loading progresses, with a minimum fill time
+- Preloads fonts and all 6 GLB models (plain fetch for progress, then GLTF preload decodes from cache), capped at 12s
+- Waits for the first interaction (pointer move, tap, key, wheel) or 2.5s, so keyboard and touch users never get stuck (the reference can hang)
+- Exit: noise letters fade, name letters fly (FLIP) onto the header logo letters, overlay fades; header logo now renders per letter
+- Added `animation/intro.ts` phases (loading → reveal → done): scroll locked and Lenis stopped until done; ScrambleText, BlurReveal and RoundButton wait for reveal so nothing animates behind the loader
+- Moved scramble logic and styles into shared `animation/scramble.ts` and `styles/scramble.module.css` (used by ScrambleText and the preloader)
+- Runs on hard loads only; in-app navigation skips it
+- Verified with checks, build, and in Chrome by driving GSAP's ticker manually (the test tab was in a background window, which pauses animation frames); the letter flight still needs a visual check in a visible tab

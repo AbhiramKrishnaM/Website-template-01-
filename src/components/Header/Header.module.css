@@ -26,6 +26,14 @@
   text-transform: uppercase;
 }
 
+.wordmark[data-hidden] {
+  visibility: hidden;
+}
+
+.wordmark span {
+  display: inline-block;
+}
+
 .nav {
   margin-right: var(--space-8);
 }

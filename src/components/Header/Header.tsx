@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
+import { useIntroPhase } from '../../animation/intro'
 import { useContent } from '../../content/useContent'
 import { useIsMobile } from '../../hooks/useMediaQuery'
 import { useLocalizedPath } from '../../lib/useLocalizedPath'
@@ -14,14 +15,28 @@ export function Header() {
   const localize = useLocalizedPath()
   const isMobile = useIsMobile()
   const { pathname } = useLocation()
+  const introPhase = useIntroPhase()
   const [openedOn, setOpenedOn] = useState<string | null>(null)
   const menuOpen = isMobile && openedOn === pathname
 
   return (
     <header className={styles.header}>
       <span className={styles.frost} aria-hidden="true" />
-      <Link to={localize('/')} className={styles.wordmark}>
-        {siteName}
+      <Link
+        to={localize('/')}
+        className={styles.wordmark}
+        aria-label={siteName}
+        data-hidden={introPhase !== 'done' || undefined}
+      >
+        {[...siteName].map((char, i) =>
+          char === ' ' ? (
+            ' '
+          ) : (
+            <span key={i} data-logo-letter aria-hidden="true">
+              {char}
+            </span>
+          ),
+        )}
       </Link>
 
       {isMobile ? (

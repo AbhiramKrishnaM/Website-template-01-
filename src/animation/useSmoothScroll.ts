@@ -2,6 +2,7 @@ import Lenis from 'lenis'
 import { useEffect } from 'react'
 import { useFinePointer, useReducedMotion } from '../hooks/useMediaQuery'
 import { gsap, ScrollTrigger } from './gsap'
+import { hasReached, onIntroPhase } from './intro'
 import { LENIS_LERP } from './tokens'
 
 let lenis: Lenis | null = null
@@ -27,7 +28,11 @@ export function useSmoothScroll(): void {
     gsap.ticker.lagSmoothing(0)
     lenis = instance
 
+    if (!hasReached('done')) instance.stop()
+    const offDone = onIntroPhase('done', () => instance.start())
+
     return () => {
+      offDone()
       gsap.ticker.remove(tick)
       instance.destroy()
       lenis = null

@@ -49,13 +49,14 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 
 ## 4. Preloader
 
-- [ ] 5×19 letter grid with brand letters hidden in row 3
-- [ ] Per-letter flicker / glyph-swap animation
-- [ ] Preload fonts, GLBs and textures; track progress
-- [ ] Wait for the first `pointermove` (with touch / timer fallback on mobile)
-- [ ] Exit: random letters fade, brand letters FLIP to the header logo
-- [ ] Lock scroll and stop Lenis until ready
-- [ ] Only run on hard loads, not on in-app navigation
+- [x] 5×19 letter grid with brand letters hidden in row 3
+- [x] Per-letter flicker / glyph-swap animation (letters appear as loading progresses)
+- [x] Preload fonts, GLBs and textures; track progress (textures added when sections need them)
+- [x] Wait for the first `pointermove` (with touch / timer fallback on mobile) — also key, wheel, and a 2.5s timeout
+- [x] Exit: random letters fade, brand letters FLIP to the header logo
+- [x] Lock scroll and stop Lenis until ready
+- [x] Only run on hard loads, not on in-app navigation
+- [ ] Watch the letter flight in a visible tab and tune timings if needed (user)
 
 ## 5. Ink page transition
 
