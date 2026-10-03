@@ -108,3 +108,6 @@ Entry format:
 - `InkTransition` now has explicit phases (idle → cover → reveal → tail): the canvas releases the pointer and scrolling 1s before the reveal ends (as the reference does); a click in that tail starts the next cover from the ink already on screen (same noise seed, duration scaled to the remaining distance), so there is no overlap or jump
 - Clicks during the cover and the main reveal are still ignored
 - Verified in Chrome with a sampled timeline (cover 2.8s, reveal 2.8s, pointer released at ~4.9s) and a tail click that continued from 0.08 ink to the next page; real mouse input can't reach the background test tab, so the hand cursor was checked via hit-testing and computed `cursor: pointer`
+
+## 2026-10-03 — Ink transition visual check
+- User watched transitions in a visible tab: looks good, no speed or colour changes needed

@@ -67,7 +67,7 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Transition context so links wait for the cover to finish (global click capture, no Link changes needed)
 - [x] Scroll to top and restart ScrollTriggers after the swap
 - [x] Reduced-motion fallback: simple cross-fade (also used when WebGL is unavailable)
-- [ ] Watch a transition in a visible tab and tune speed / edge colour if needed (user)
+- [x] Watch a transition in a visible tab and tune speed / edge colour if needed (user: looks good)
 
 ## 6. Glass-flower shader
 
