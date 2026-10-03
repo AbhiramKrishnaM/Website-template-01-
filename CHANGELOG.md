@@ -195,3 +195,8 @@ Entry format:
 - User noticed passed progress circles stayed visible as pale rings in the corner; in the reference each circle disappears as its wipe begins (the wipe grows from it at the same size and colour). Each circle now hides with its label at the start of its wipe, leaving only the upcoming slides' circles
 - Found while testing: landing exactly on a card-swap point while jumping back and forth could leave the previous slide's card showing (a GSAP callback doesn't refire when moving forward from exactly its time). The visible card is now derived from the playhead on every update instead of timeline callbacks
 - Verified in Chrome: circle states at slides 2/3/4, and the correct card after jumps to 1.6, 5.6, 2.5, 3.6, 0.2, 7.9, 4.5, 4.6
+
+## 2026-10-03 — CLAUDE.md brought up to date
+- Goal now stated as matching the reference exactly, with placeholder text
+- Added "Matching the reference" (measure the reference CSS and bundle first, record values in `website.md`, write our own code, original copy), a code map of the sections, `three/` helpers and intro phases, and how to verify in the background Chrome tab (stepping GSAP, Lenis scrolling, forcing WebGL frames, synthetic pointer events)
+- Assets note updated for the photos permission and O.LA's conditional approval of the third-party parts
