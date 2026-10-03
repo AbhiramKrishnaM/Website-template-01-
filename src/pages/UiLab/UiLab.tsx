@@ -1,14 +1,29 @@
 import { BlurReveal } from '../../components/BlurReveal/BlurReveal'
 import { ConnectorLine } from '../../components/ConnectorLine/ConnectorLine'
+import { GlassFlower } from '../../components/GlassFlower/GlassFlower'
 import { RoundButton } from '../../components/RoundButton/RoundButton'
 import { ScrambleText } from '../../components/ScrambleText/ScrambleText'
 import { SectionLabel } from '../../components/SectionLabel/SectionLabel'
+import { FLOWER_IMAGES } from '../../content/images'
 import styles from './UiLab.module.css'
 
 export function UiLab() {
   return (
     <div className={styles.lab}>
       <ScrambleText as="h1" text="Shared UI components" className={styles.title} />
+
+      <section className={styles.glassHero}>
+        <GlassFlower src={FLOWER_IMAGES.hero} dissolveOnScroll className={styles.glass} />
+        <p className={styles.glassQuote}>Glass flower, dissolving as it scrolls away</p>
+      </section>
+
+      <section className={styles.glassRow}>
+        {[FLOWER_IMAGES.ctaPsychotherapy, FLOWER_IMAGES.ctaAbout, FLOWER_IMAGES.contact].map(
+          (src) => (
+            <GlassFlower key={src} src={src} className={styles.glassSmall} />
+          ),
+        )}
+      </section>
 
       <section className={styles.block}>
         <SectionLabel label="Section label" note="(with a note)" />

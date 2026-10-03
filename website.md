@@ -125,6 +125,8 @@ Analysed: 2026-10-02, desktop Chrome, viewport 1920×992 CSS px.
 
 ### 3.4 Glass-flower shader (`glass-flower-canvas__element`)
 
+**Corrected from the reference bundle (2026-10-03):** the clear region is a cursor-driven lens (head, lagging trail and velocity), not a timed band. The base is perlin-fbm mist over the photo with a feather mask for soft edges, glass curvature, colour grading (saturation, exposure, brightness, highlight lift), an intro reveal (delay, duration, softness) and focus/hover states. Its props include scale, offset (plus mobile variants), hoverRadius, distortion, bleed, softness, grain and image fade start/end. Our implementation (`src/shaders/glass.frag`) is written independently from this description.
+
 **Observed**
 
 - A flat photo (`hero-canvas.webp`) rendered through a frosted-glass look.

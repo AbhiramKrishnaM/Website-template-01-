@@ -111,3 +111,25 @@ Entry format:
 
 ## 2026-10-03 — Ink transition visual check
 - User watched transitions in a visible tab: looks good, no speed or colour changes needed
+
+## 2026-10-03 — Glass-flower shader (todo section 6)
+- Added `GlassFlower` and `shaders/glass.frag`: an image fitted inside its box, frosted (8-tap jittered blur, desaturated, tinted toward the paper colour), with a drifting clear "glass rod" band that magnifies and shows full colour with a darker rim, film grain and a bottom fade
+- `dissolveOnScroll`: the image breaks into 3px grains that lift and drop out as the section scrolls away (`uDissolve`, scrubbed by ScrollTrigger)
+- Renders only while on screen (IntersectionObserver) on the GSAP ticker; DPR capped at 1.5; reduced motion freezes the band; no WebGL falls back to a blurred `<img>`
+- Extracted shared WebGL setup to `lib/webgl.ts` (quad program, CSS colour tokens); the ink renderer now uses it
+- Added four original placeholder flower SVGs (tulip, poppy, lily, magnolia) in `public/images/flowers/`, mapped in `content/images.ts`; real photos to replace them later
+- Demo on the dev component page `/en/dev/ui`; verified in Chrome: frosted render, moving band, scroll dissolve, all four images
+
+## 2026-10-03 — Glass flower rebuilt to match the reference technique
+- User reported the glass flower looked nothing like the reference. Cause: the shader was guessed from screenshots (timed band and blur), and flat SVG placeholders were used instead of photos
+- Read the reference bundle's glass component inputs: cursor-driven lens with trail, perlin mist frosting, feathered edges, glass curvature, colour grading, intro reveal; recorded in `website.md` section 3.4
+- Rewrote `shaders/glass.frag` independently: drifting misty frosting with rippled-glass warp and grain, a clear lens shaped as a capsule from the lagging trail to the cursor with curved-glass magnification and a darker rim, colour grading, feathered photo edges, bottom fade, noise intro reveal, and the scroll dissolve kept
+- `GlassFlower`: tracks the cursor (head follows fast, trail lags), fades the lens in and out on hover, auto-drifts the lens on touch screens, plays the intro on reveal, takes `look` overrides and `bleed`
+- The user reports O.LA's permission now covers the site's photos; downloaded the four glass-flower photos (originals in `reference-assets/images/`, copies in `public/images/flowers/`), removed the SVG placeholders; practitioner portraits deliberately not downloaded
+- Verified in Chrome: real tulip renders frosted with soft edges; simulated cursor sweep shows the clear magnified lens and trailing smear
+
+## 2026-10-03 — Glass flower: lit lens
+- User compared against the reference: its hover lens glows (warmer, brighter, with a glossy white highlight), ours only cleared the frost
+- Added lens lighting to `glass.frag`: brighter, warmer, more saturated photo inside the lens; glossy highlight toward the lower right plus a bright rim crescent; a soft halo that lifts the frost around the lens; glow scales with cursor speed (`uEnergy`); strength via `lensLight` in the look
+- Lens radius 0.14 → 0.19 and a longer trail (trail follow 3.2 → 2.2)
+- Verified in Chrome with a simulated cursor sweep (moving and resting states)

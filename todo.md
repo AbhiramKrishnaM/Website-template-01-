@@ -71,12 +71,14 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 
 ## 6. Glass-flower shader
 
-- [ ] Plane component that takes an image texture
-- [ ] Frosted blur + desaturation pass
-- [ ] Moving clear "refraction band" with sharper colour inside
-- [ ] Film grain + bottom fade
-- [ ] `uDissolve` uniform: grain breaks up and lifts on scroll-out
-- [ ] Source / prepare our own 4 flower photos (hero, 2 CTAs, contact)
+- [x] Plane component that takes an image texture (`GlassFlower`, raw WebGL, renders only while on screen)
+- [x] Frosted blur + desaturation pass
+- [x] Clear lens with sharper colour inside — rebuilt as a cursor-following lens with a lagging trail and curved-glass magnification (auto-drifts on touch screens)
+- [x] Film grain + bottom fade
+- [x] `uDissolve` uniform: grain breaks up and lifts on scroll-out
+- [x] Source / prepare our own 4 flower photos (hero, 2 CTAs, contact) — using the reference photos (permission per user) in `public/images/flowers/`
+- [x] Misty noise frosting, feathered photo edges, colour grading, and an intro reveal through noise
+- [ ] Tune each flower's scale / position / look when it's placed in its real section (sections 7, 11, 12, 13)
 
 ## 7. Home — hero + intro
 

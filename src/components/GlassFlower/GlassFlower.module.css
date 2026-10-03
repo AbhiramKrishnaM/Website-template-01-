@@ -1,0 +1,18 @@
+.wrap {
+  position: relative;
+  pointer-events: none;
+}
+
+.canvas,
+.fallback {
+  position: absolute;
+  inset: calc(var(--bleed, 0px) * -1);
+  width: calc(100% + var(--bleed, 0px) * 2);
+  height: calc(100% + var(--bleed, 0px) * 2);
+}
+
+.fallback {
+  object-fit: contain;
+  filter: blur(6px) saturate(0.8);
+  opacity: 0.75;
+}
