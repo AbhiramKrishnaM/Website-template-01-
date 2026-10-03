@@ -26,6 +26,10 @@ export interface Content {
       titleLines: [string, string]
       paragraphs: string[]
     }
+    cards: {
+      label: string
+      slides: { title: string; quote: string; author: string }[]
+    }
   }
   pages: {
     home: { title: string }

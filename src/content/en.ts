@@ -37,6 +37,36 @@ export const en: Content = {
         'Together, in a confidential setting, we look beneath the surface, trace where the difficulties began and build change that lasts.',
       ],
     },
+    cards: {
+      label: 'What brings you here',
+      slides: [
+        {
+          title: 'Anxiety or low mood weighs on you',
+          quote: 'Heavy days are real. They are not the whole story.',
+          author: 'Placeholder author',
+        },
+        {
+          title: 'Being kind to yourself feels hard',
+          quote: 'Acceptance is where change quietly starts.',
+          author: 'Placeholder author',
+        },
+        {
+          title: 'Life is shifting under your feet',
+          quote: 'When the path changes, we find new ways to walk.',
+          author: 'Placeholder author',
+        },
+        {
+          title: 'Old wounds still ache',
+          quote: 'What we can name, we can begin to tend.',
+          author: 'Placeholder author',
+        },
+        {
+          title: 'You want closer connections',
+          quote: 'Being seen is a risk worth learning to take.',
+          author: 'Placeholder author',
+        },
+      ],
+    },
   },
   pages: {
     home: { title: 'Home' },

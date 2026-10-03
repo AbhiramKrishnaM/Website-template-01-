@@ -1,10 +1,10 @@
 :root {
   --bg-cream: #f7f3ee;
-  --bg-blush: #fcf8f7;
-  --bg-grey: #ecebea;
-  --bg-greige: #e0dcdb;
-  --bg-rose: #d3c8ca;
-  --bg-mauve: #b5a7a8;
+  --bg-blush: #fefbfb;
+  --bg-grey: #ededed;
+  --bg-greige: #dfdbdb;
+  --bg-rose: #d3c9c9;
+  --bg-mauve: #b5a7a7;
   --bg-footer: #e3dad7;
   --bg-panel-a: #f3eeea;
   --bg-panel-b: #f2e9e5;
@@ -14,7 +14,8 @@
   --accent-dark: #5e3a3c;
   --muted: #8b8583;
   --tide: #8c7468;
-  --numeral: rgb(255 255 255 / 45%);
+  --numeral: #fff;
+  --quote: #444;
 
   --font-display: 'Cormorant', 'Times New Roman', serif;
   --font-body: 'Inter', system-ui, sans-serif;

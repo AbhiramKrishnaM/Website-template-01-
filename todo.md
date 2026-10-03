@@ -85,24 +85,26 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Hero: 4-line staggered quote layout over the glass flower
 - [x] Pin hero; scramble quote lines out on scroll (230svh hero, sticky inner, scrub 1.4, matches reference timing)
 - [x] Hook hero scroll progress to the flower dissolve
-- [x] Intro: dandelion seeds drifting (sway, bob, rotate, per-seed parallax) — 9 seeds cloned from the dandelion model's 5 seed meshes, ink colours
+- [x] Intro: dandelion seeds drift upright and then fly down to land in their slots on the slide-1 dandelion (`SeedFlight`)
 - [x] Intro: 2-line caps statement + 3 centered paragraphs with connector lines
-- [ ] Background colour change into the next section (it's the edge of the cards section; do with section 8)
+- [x] Background colour change into the next section (cream intro → blush cards section)
 
 ## 8. Home — pinned 5-slide flowers (biggest chunk, plan ~2 weeks)
 
-- [ ] Pin the section for ~8.5 viewports, split into 5 slide ranges
-- [ ] Slide layout: flower left, heading + quote + author right
-- [ ] Giant background numerals 01–05 with cross-fade
-- [ ] Circular background wipe between slide colours
-- [ ] Bottom-right stacked-circle progress counter (1/5–5/5)
-- [ ] One fixed R3F canvas; swap the visible model per slide
-- [ ] Scrub each model's baked animations with `mixer.setTime(progress × duration)`
-- [ ] Echinacea: drive its morph targets from scroll too
-- [ ] Grey → colour bloom (mix texture sets or `onBeforeCompile` height mask)
-- [ ] Particle dissolve on exit (`MeshSurfaceSampler` points pushed by curl noise)
+- [x] Pin the section for ~8.5 viewports, split into 5 slide ranges (900svh, sticky inner, scrub 1.2 desktop / 0.2 touch)
+- [x] Slide layout: flower left, heading + quote + author right (flower stage empty until part 2)
+- [x] Giant background numerals 01–05 (fixed 0; stacked digits swap by clip + small slide; 0 and later digits dim to 30% on desktop)
+- [x] Circular background wipe between slide colours (grows out of the next slide's progress circle; 2 timeline units per slide)
+- [x] Bottom-right stacked-circle progress counter (1/5–5/5)
+- [x] One fixed R3F canvas; swap the visible model per slide (fade + scale hand-off; lazy-loaded)
+- [x] Scrub each model's baked animations from scroll (per-clip `action.time` + `mixer.update(0)`; `setTime` froze finished clips)
+- [x] Echinacea: drive its morph targets from scroll too (comes with the clip scrubbing)
+- [x] Grey → colour bloom (monochrome ink → natural colours via an `onBeforeCompile` patch, per slide)
+- [x] Flower swap follows the wipe: incoming flower clipped inside the circle, outgoing outside, stippled boundary (replaces the planned particle dissolve)
+- [x] Hover: flower shakes when the cursor moves over its head (damped spring)
+- [x] Card titles reveal word by word from the left; section label fades as the pin starts
 - [ ] Dandelion: procedural motion (no baked animation)
-- [ ] Slow Y rotation during the hold phase
+- [x] Slow Y rotation during the hold phase
 - [ ] Performance pass: frameloop on demand outside this section, DPR cap 1.5
 
 ## 9. Home — wishes → WELLNESS → ranunculus

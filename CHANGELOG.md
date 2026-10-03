@@ -147,3 +147,46 @@ Entry format:
 - Added `IntroSeeds`: a sticky Three.js layer (orthographic, 1 unit = 1 CSS px) starting one screen above the section, so seeds drift in while the hero tulip finishes dissolving; 9 seeds cloned from the dandelion model's five seed meshes (`petal-one` … `petal-five`), recoloured in ink tones, each swaying, bobbing and turning, moving at its own scroll speed for depth; renders only while on screen
 - Lazy-loaded the seeds layer so Three.js / R3F / drei sit in a separate chunk: main bundle 142 KB gzip (was 407 KB with them inline)
 - Verified in Chrome: seeds rising into the end of the hero, title and paragraphs revealing, connectors drawing, footer after the section
+
+## 2026-10-03 — Pinned five-slide section, part 1: structure (todo section 8)
+- Read the reference cards CSS (heights, fill colours, card, numeral, progress widget, scrub values) and recorded it in `website.md` section 4.3
+- Added `pages/Home/sections/Cards`: 900svh section with a sticky inner; one scroll-scrubbed timeline (scrub 1.2 desktop, 0.2 touch) runs per transition a circular colour wipe from the bottom right, card out / card in, the numeral digit roll (fixed "0" + rolling digit) and the matching progress circle shrinking; the active slide's title decodes in, and again when scrolling back
+- Original placeholder slide titles and quotes (en and uk) with a placeholder author; the reference quotes real authors, so none were reused
+- Slide colours set to the reference values; the blush section edge completes the section 7 background item
+- Reduced motion renders the five slides as plain stacked cards without pinning
+- Left half (flower stage) is empty until part 2 adds the 3D flowers
+- Verified in Chrome at every slide, mid-wipe, and scrolling back
+
+## 2026-10-03 — Pinned five-slide section, part 2: 3D flowers (todo section 8)
+- Inspected the models' animations: globe thistle 1,100 scale clips (florets grow 0 → ~0.28 while "holes" shrink 1 → 0), hydrangea and artichoke transform clips, echinacea 17 morph-weight clips plus 2 scale; dandelion has none
+- Added `FlowerStage` (lazy-loaded): one R3F canvas in the left half (top half on phones) showing dandelion, globe thistle, hydrangea, echinacea and artichoke for slides 1–5; each model is cloned, fitted so the head sits in the upper third with the stem running off the bottom, faded and scaled in/out around each transition, slowly turned while held, rendered only while on screen, DPR capped at 1.5
+- Bloom is scrubbed from the Cards timeline (shared through a clock ref): each slide's clips play from closed to open over the first part of its slide, and reverse when scrolling back
+- Fixed: `mixer.setTime` left clips frozen at their first frame once they had finished (LoopOnce + clamp pauses the action); now each action's time is set directly, kept just short of its end, and evaluated with `mixer.update(0)`
+- Three.js objects are held behind refs in the frame loop (React compiler lint)
+- Verified in Chrome: dandelion; globe thistle mid-bloom and full bloom; hydrangea; echinacea drooping then open; artichoke open
+
+## 2026-10-03 — Seeds fly onto the dandelion; monochrome → colour flowers
+- User pointed out that in the reference the intro seeds travel down and land on the dandelion, and the flowers change colour; ours only floated. Confirmed from the reference: the seeds are the dandelion's own five seeds, upright while drifting, and materials blend between monochrome and natural colours
+- Replaced `IntroSeeds` with `SeedFlight`: a fixed overlay whose camera is aligned every frame to the flower stage's on-screen rect (`setViewOffset`), so each seed's landed pose is pixel-identical to its slot on the stage dandelion; seeds drift upright with the page (parallax, sway), then from ~62–78% of the intro→cards scroll curve down and land in their slots, one after another; two extra seeds just scroll away
+- The stage dandelion hides its five seeds until they land (shared `three/seedFlight` progress) and holds still at the hand-off
+- Added `three/monochrome.ts`: an `onBeforeCompile` patch that blends any lit (incl. textured) material from ink-toned monochrome to natural colour; each slide's flower arrives monochrome and colours in from ~0.1 to ~0.55 of its slide
+- Shared `three/fitModel.ts` (flower setups, fitting, per-instance material clones) and `three/StageLights.tsx` so both canvases match exactly
+- Verified in Chrome: upright drifting seeds, seeds converging on the head, seamless landing, monochrome dandelion, green-stemmed colour mid-slide
+
+## 2026-10-03 — Five-slide flowers moved to the reference positions
+- User noticed the flowers sat too high. Measured the reference slides from the walkthrough screenshots: each flower's top sits ~31–37% down the screen and its centre ~19–23% from the left; ours were ~19–20% down and 25% across, and some were oversized
+- Flower stage narrowed to the left 42% on desktop (centre ~21%); phones unchanged; the seed overlay follows the stage automatically
+- `fitModel.ts` now places each flower's top by screen fraction (`topAt`) and the sizes were tuned: dandelion 4.7, globe thistle 4.5, hydrangea 4.6 (top 0.29 of its closed pose), echinacea 3.9 (top 0.34), artichoke 3.8
+- Re-measured in Chrome: tops 33/32/36/37/34% and widths within ~1% of the reference; seeds still land on the lowered dandelion
+
+## 2026-10-03 — Five-slide section reworked to the reference timeline
+- User showed the reference: flowers swap with the background wipe, the 0 stays while the digit changes, and flowers shake on hover. Read the reference cards timeline and recorded it in `website.md` section 4.3
+- `Cards`: two timeline units per slide; each wipe is a pixel `clip-path` circle growing out of the next slide's progress circle (same size and colour) over one unit; old card and progress label hide at the start; digits are now stacked and swap by clip-path (old clips away downward while sliding 20%, new revealed from the top settling from −20%); new card at mid-wipe with its title words sliding in from the left (replaces the letter scramble here); section label fades as the pin starts; "0" and later digits dim to 30% on desktop
+- `FlowerStage`: flowers are clipped by the live wipe circles (tracked from the DOM each frame and converted to canvas pixels) via a shared material patch (`three/monochrome.ts` → `patchFlowerMaterial`): incoming flower inside the circle, outgoing outside, interleaved grain by grain on a stippled edge; no more opacity fade. Bloom and colour now run after each wipe; hovering a flower's head kicks a damped spring shake
+- Fixed: title word spaces collapsed inside the overflow masks
+- Verified in Chrome: digit swap at 6.3/6.5, echinacea/artichoke split across the wipe edge at 6.62, closed black artichoke at 6.72, opened and coloured at 7.8, hover shake tilt
+
+## 2026-10-03 — Seeds fall in from the top during the hero
+- User noted that in the reference the dandelion seeds come down from the top as you scroll out of the hero; ours were anchored inside the intro and rose from the bottom, only after the hero ended
+- `SeedFlight`: the seed progress now starts 0.4 screens earlier (during the tulip dissolve); each seed drops from above the screen to a resting spot (staggered), sinks slowly while the intro scrolls past, then the five landing seeds fly into their dandelion slots as before; the two extra seeds sink faster and leave through the bottom
+- Verified in Chrome: seeds entering at the top edge while the tulip is dust, spread around the intro text mid-scroll, converging on the dandelion near the cards section

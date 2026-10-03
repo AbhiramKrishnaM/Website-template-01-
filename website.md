@@ -198,11 +198,17 @@ Analysed: 2026-10-02, desktop Chrome, viewport 1920×992 CSS px.
 
 ### 4.2 Psychoanalytic intro (2426px)
 
+**Corrected (2026-10-03):** the intro seeds are the dandelion's own five seeds. They hang upright (fluff up, seed down, slight tilt) and scroll with the page at slightly different speeds. As the five-slide section arrives they curve down one after another and land in their slots on the slide-1 dandelion, which starts monochrome and then takes on its natural colours (all five flowers do). The reference materials carry `monochromeColor` / `naturalColor` with `monochrome` / `colored` modes; seed settings include `isPlume`, `uprightRotation`, `baseRotationZ` and `hitRadius`.
+
 - **3D:** ~8–10 instanced dandelion seeds (pappus + seed). Each drifts on its own path: slow fall, sine sway, slow Y rotation, with a parallax speed tied to scroll.
 - **Content:** a two-line statement in caps (line 2 in `--accent`), then three short centered paragraphs. A thin vertical connector line (1px, `--muted`) between them draws itself in on scroll (`scaleY` 0→1). The last connector ends in a small arrowhead.
 - Background switches from cream to `--bg-blush` at the section end.
 
 ### 4.3 "What brings you here" (8424px ≈ 8.5 viewports, pinned) — the signature section
+
+**Timeline, confirmed from the reference (2026-10-03):** two units per slide. Transition k starts at 2(k−1): the fill wipes as a `clip-path` circle growing from the next slide's progress circle (its own size and colour) to past the farthest corner over 1 unit (`power1.inOut`); the old card and progress label hide instantly; digits are stacked, the old one clips away downward while sliding 20% (from +0.1, 0.28 units) and the new one is revealed from the top while settling from −20% (from +0.38, 0.48 units); at +0.5 the new card shows and its title words slide in from −110% (1.05s, `power2.out`, stagger ≤ 0.085). The section label fades at 0; on desktop the "0" and later digits sit at 30% opacity. Flowers are split by the same wipe: the incoming one (monochrome, closed) inside the circle, the outgoing outside, with a dithered boundary; it then opens and colours in. Hovering a flower makes it shake.
+
+**Confirmed from the reference CSS (2026-10-03):** `.cards` 900dvh with a sticky 100dvh inner, base `#fefbfb`; four `clip-path` fill layers `#ededed`, `#dfdbdb`, `#d3c9c9`, `#b5a7a7`; card on the right (right 200px, width 640px, vertically centred); title Cormorant 46px/500 uppercase, letter-spacing −4%; quote 24px italic `#444`; author 16px italic 300 in accent after a 65px rule; numeral 800px weight 300 white at left 70% / top 35%, built as a fixed "0" plus a rolling digit window; progress widget 150px box with circles 93/70/56/42px and 10px labels; scrub 1.2 (0.2 on touch). Mobile: card at top 57% full width, numeral centred at 66% in 50% white, 68px progress widget without labels.
 
 - **Layout** (per slide, 50/50):
   - left: a 3D flower on a stem rising from the bottom edge;

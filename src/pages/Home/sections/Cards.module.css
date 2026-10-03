@@ -1,0 +1,311 @@
+.cards {
+  position: relative;
+  height: 900svh;
+  background: var(--bg-blush);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--bg-blush);
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  will-change: clip-path;
+}
+
+.fillTwo {
+  background: var(--bg-grey);
+}
+
+.fillThree {
+  background: var(--bg-greige);
+}
+
+.fillFour {
+  background: var(--bg-rose);
+}
+
+.fillFive {
+  background: var(--bg-mauve);
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+.heading {
+  position: absolute;
+  top: 5.625rem;
+  left: 0;
+  right: 0;
+}
+
+.stage {
+  position: absolute;
+  inset: 0 58% 0 0;
+}
+
+.counter {
+  position: absolute;
+  top: 35%;
+  left: 70%;
+  display: inline-flex;
+  translate: -50% -50%;
+  font-family: var(--font-display);
+  font-size: 50rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--numeral);
+  pointer-events: none;
+}
+
+.zero {
+  line-height: 1.1;
+}
+
+.window {
+  position: relative;
+  display: inline-block;
+  width: 0.6em;
+  height: 1.12em;
+  overflow: hidden;
+  clip-path: inset(0);
+}
+
+.digit {
+  position: absolute;
+  inset: 0;
+  display: block;
+  line-height: 1.1;
+  will-change: transform, clip-path;
+}
+
+.wordMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.word {
+  display: inline-block;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  right: 12.5rem;
+  z-index: 2;
+  width: 40rem;
+  translate: 0 -50%;
+}
+
+.title {
+  margin-bottom: 6.25rem;
+  font-size: 2.875rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.quote {
+  margin: 0;
+}
+
+.quoteText {
+  margin-bottom: 1.25rem;
+  font-size: var(--text-lg);
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+  color: var(--quote);
+}
+
+.author {
+  position: relative;
+  display: block;
+  padding-left: 5rem;
+  font-size: var(--text-sm);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+
+.author::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4.0625rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 9.375rem;
+  height: 9.375rem;
+  font-family: var(--font-display);
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circleTwo {
+  top: 1.125rem;
+  right: 1.875rem;
+  width: 5.8125rem;
+  height: 5.8125rem;
+  background: var(--bg-grey);
+}
+
+.circleThree {
+  top: 2.5rem;
+  right: 2.375rem;
+  width: 4.375rem;
+  height: 4.375rem;
+  background: var(--bg-greige);
+}
+
+.circleFour {
+  top: 3.4375rem;
+  right: 2.625rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--bg-rose);
+}
+
+.circleFive {
+  top: 4.25rem;
+  right: 2.875rem;
+  width: 2.625rem;
+  height: 2.625rem;
+  background: var(--bg-mauve);
+}
+
+.circleLabel {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.9rem;
+  font-size: 0.625rem;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.static {
+  padding-block: var(--space-8);
+  background: var(--bg-blush);
+}
+
+.staticCard {
+  max-width: 40rem;
+  margin: var(--space-8) auto 0;
+  padding-inline: var(--gutter);
+}
+
+.staticNumber {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--accent);
+}
+
+@media (max-width: 48rem) {
+  .heading {
+    top: 2.25rem;
+  }
+
+  .stage {
+    inset: 0 0 50%;
+  }
+
+  .counter {
+    top: 66%;
+    left: 50%;
+    z-index: 0;
+    font-size: clamp(16.25rem, 75vw, 25rem);
+    color: rgb(255 255 255 / 50%);
+  }
+
+  .card {
+    top: 57%;
+    right: 1.25rem;
+    left: 1.25rem;
+    width: auto;
+    translate: none;
+  }
+
+  .title {
+    margin-bottom: 1.375rem;
+    font-size: clamp(1.625rem, 7vw, 2.125rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  .quoteText {
+    margin-bottom: 1rem;
+    font-size: clamp(1rem, 4.4vw, 1.25rem);
+    line-height: 1.35;
+  }
+
+  .author {
+    padding-left: 3.375rem;
+    font-size: 0.875rem;
+  }
+
+  .author::before {
+    width: 2.625rem;
+  }
+
+  .progress {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+
+  .circleTwo {
+    inset: 0 auto auto 0;
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+
+  .circleThree {
+    inset: 0.5rem auto auto 0.5rem;
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .circleFour {
+    inset: 0.9375rem auto auto 0.9375rem;
+    width: 2.375rem;
+    height: 2.375rem;
+  }
+
+  .circleFive {
+    inset: 1.375rem auto auto 1.375rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .circleLabel {
+    display: none;
+  }
+}

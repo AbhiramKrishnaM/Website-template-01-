@@ -4,18 +4,6 @@
   padding: 9.375rem var(--gutter) 4.375rem;
 }
 
-.seedLayer {
-  position: absolute;
-  inset: -100svh 0 0;
-  pointer-events: none;
-}
-
-.seedStage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-}
-
 .title {
   position: relative;
   display: flex;

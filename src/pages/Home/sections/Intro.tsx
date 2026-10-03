@@ -1,23 +1,15 @@
-import { lazy, Suspense } from 'react'
 import { BlurReveal } from '../../../components/BlurReveal/BlurReveal'
 import { ConnectorLine } from '../../../components/ConnectorLine/ConnectorLine'
 import { ScrambleText } from '../../../components/ScrambleText/ScrambleText'
 import { useContent } from '../../../content/useContent'
 import styles from './Intro.module.css'
 
-const IntroSeeds = lazy(() =>
-  import('./IntroSeeds').then((module) => ({ default: module.IntroSeeds })),
-)
-
 export function Intro() {
   const { home } = useContent()
   const { titleLines, paragraphs } = home.intro
 
   return (
-    <section className={styles.intro}>
-      <Suspense>
-        <IntroSeeds />
-      </Suspense>
+    <section className={styles.intro} data-seed-start>
       <h2 className={styles.title} aria-label={titleLines.join(' ')}>
         <ScrambleText text={titleLines[0]} className={styles.titleLine} />
         <ScrambleText text={titleLines[1]} className={styles.titleAccent} delay={0.15} />
