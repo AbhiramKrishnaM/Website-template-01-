@@ -85,9 +85,9 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Hero: 4-line staggered quote layout over the glass flower
 - [x] Pin hero; scramble quote lines out on scroll (230svh hero, sticky inner, scrub 1.4, matches reference timing)
 - [x] Hook hero scroll progress to the flower dissolve
-- [ ] Intro: instanced dandelion seeds drifting (fall, sway, rotate, parallax)
-- [ ] Intro: 2-line caps statement + 3 centered paragraphs with connector lines
-- [ ] Background colour change into the next section
+- [x] Intro: dandelion seeds drifting (sway, bob, rotate, per-seed parallax) — 9 seeds cloned from the dandelion model's 5 seed meshes, ink colours
+- [x] Intro: 2-line caps statement + 3 centered paragraphs with connector lines
+- [ ] Background colour change into the next section (it's the edge of the cards section; do with section 8)
 
 ## 8. Home — pinned 5-slide flowers (biggest chunk, plan ~2 weeks)
 

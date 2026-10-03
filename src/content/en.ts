@@ -29,6 +29,14 @@ export const en: Content = {
       'It begins with the patience',
       'to listen inward.',
     ],
+    intro: {
+      titleLines: ['Psychotherapy offers', 'a way back to yourself'],
+      paragraphs: [
+        'A steady space to make sense of your feelings, your relationships and the patterns that keep repeating.',
+        'Whether you are facing anxiety, grief, burnout or a turning point in life, or simply want to know yourself better, therapy can open new directions.',
+        'Together, in a confidential setting, we look beneath the surface, trace where the difficulties began and build change that lasts.',
+      ],
+    },
   },
   pages: {
     home: { title: 'Home' },

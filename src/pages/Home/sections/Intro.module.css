@@ -1,0 +1,102 @@
+.intro {
+  position: relative;
+  z-index: 2;
+  padding: 9.375rem var(--gutter) 4.375rem;
+}
+
+.seedLayer {
+  position: absolute;
+  inset: -100svh 0 0;
+  pointer-events: none;
+}
+
+.seedStage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin: 0 auto 5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.titleAccent {
+  color: var(--accent);
+}
+
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  width: 23.125rem;
+  font-size: var(--text-md);
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.connector {
+  padding-block: 3.75rem;
+}
+
+@media (max-width: 48rem) {
+  .intro {
+    padding-top: 1.25rem;
+    padding-bottom: 6.25rem;
+  }
+
+  .title {
+    width: 100%;
+    margin-bottom: 8rem;
+    font-size: 1.625rem;
+  }
+
+  .titleAccent {
+    margin-left: 4.375rem;
+  }
+
+  .column,
+  .step {
+    align-items: stretch;
+  }
+
+  .text {
+    width: 16.875rem;
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  .step:first-child .text {
+    margin-bottom: 7.5rem;
+  }
+
+  .step:nth-child(2) .text {
+    align-self: flex-end;
+    margin-bottom: 6rem;
+  }
+
+  .step:nth-child(3) .text {
+    align-self: flex-end;
+  }
+
+  .connector {
+    display: none;
+  }
+}

@@ -141,3 +141,9 @@ Entry format:
 - `GlassFlower` accepts an external `dissolve` ref; `addScramble` can end in `hidden`; shared `ScrambleChars` markup now used by ScrambleText and the hero
 - Home now renders the hero instead of the placeholder title; reduced motion collapses the hero to one screen
 - Verified in Chrome at 25/38/50/77/100% through the pin
+
+## 2026-10-03 — Home intro with drifting seeds (todo section 7, part 2)
+- Added `pages/Home/sections/Intro`: two-line uppercase title (second line in accent) that scrambles in, three centred paragraphs that blur in, linked by self-drawing connector lines (last with an arrow); mobile layout alternates paragraphs left/right without connectors, per the reference CSS. Original placeholder copy in en and uk
+- Added `IntroSeeds`: a sticky Three.js layer (orthographic, 1 unit = 1 CSS px) starting one screen above the section, so seeds drift in while the hero tulip finishes dissolving; 9 seeds cloned from the dandelion model's five seed meshes (`petal-one` … `petal-five`), recoloured in ink tones, each swaying, bobbing and turning, moving at its own scroll speed for depth; renders only while on screen
+- Lazy-loaded the seeds layer so Three.js / R3F / drei sit in a separate chunk: main bundle 142 KB gzip (was 407 KB with them inline)
+- Verified in Chrome: seeds rising into the end of the hero, title and paragraphs revealing, connectors drawing, footer after the section

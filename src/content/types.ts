@@ -22,6 +22,10 @@ export interface Content {
   }
   home: {
     heroLines: string[]
+    intro: {
+      titleLines: [string, string]
+      paragraphs: string[]
+    }
   }
   pages: {
     home: { title: string }
