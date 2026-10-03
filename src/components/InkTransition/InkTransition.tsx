@@ -7,7 +7,6 @@ import { useReducedMotion } from '../../hooks/useMediaQuery'
 import { createInkRenderer, type InkRenderer } from './inkRenderer'
 import styles from './InkTransition.module.css'
 
-// Matches the reference: a 5.6s round trip (5.4s on phones), split evenly between cover and reveal.
 const TOTAL_SECONDS = 5.6
 const TOTAL_SECONDS_MOBILE = 5.4
 const UNLOCK_BEFORE_END_SECONDS = 1
@@ -116,7 +115,6 @@ export function InkTransition() {
       const phase = phaseRef.current
       if (samePage || phase === 'cover' || phase === 'reveal' || !hasReached('done')) return
 
-      // A click during the reveal's tail continues from the ink already on screen.
       runRef.current += 1
       phaseRef.current = 'cover'
       const ink = inkRef.current

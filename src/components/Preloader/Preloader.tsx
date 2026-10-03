@@ -30,7 +30,6 @@ function waitForInteraction(signal: AbortSignal): Promise<void> {
   })
 }
 
-// A tween's then() resolves with the tween itself, which is thenable; awaiting it directly never settles.
 function finished(animation: gsap.core.Animation): Promise<void> {
   return new Promise((resolve) => animation.then(() => resolve()))
 }

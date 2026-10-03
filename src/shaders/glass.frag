@@ -70,7 +70,6 @@ vec2 toImage(vec2 uv) {
   return (uv - 0.5 - uOffset) * fit / uScale + 0.5;
 }
 
-// Premultiplied sample with a short feather at the photo's border so it never shows a hard edge.
 vec4 photo(vec2 imageUv) {
   vec2 edge = smoothstep(vec2(0.0), vec2(0.06), imageUv) * smoothstep(vec2(0.0), vec2(0.06), 1.0 - imageUv);
   vec4 texel = texture2D(uTexture, vec2(imageUv.x, 1.0 - imageUv.y));
@@ -100,7 +99,6 @@ void main() {
 
   float grain = hash(uv * uResolution + fract(uTime * 7.0) * 61.0) - 0.5;
 
-  // Frosted base: the photo seen through rippled glass, softened by grain-jittered samples and a drifting mist.
   vec2 warp = vec2(fbm(p * 3.0 + uTime * 0.02), fbm(p * 3.0 + 5.2 - uTime * 0.02)) - 0.5;
   vec2 frostUv = uv + warp * uDistortion;
   vec4 frost = photo(toImage(frostUv + grain * 0.006 * uSoftness));
@@ -110,7 +108,6 @@ void main() {
   vec3 baseColor = mix(grade(straight(frost)), uPaper, uMist * (0.6 + 0.8 * mist));
   float baseAlpha = frost.a * uBaseOpacity * (0.82 + 0.3 * mist);
 
-  // Clear lens: a capsule from the lagging trail to the cursor head, narrowing toward the tail.
   vec2 head = vec2(uHead.x * aspect, uHead.y);
   vec2 tail = vec2(uTrail.x * aspect, uTrail.y);
   vec2 along = head - tail;
@@ -119,13 +116,11 @@ void main() {
   float radius = uRadius * mix(0.45, 1.0, t);
   float lens = (1.0 - smoothstep(radius * 0.55, radius, distance)) * uHover;
 
-  // Curved glass: pull samples toward the head so the centre of the lens magnifies.
   float fromHead = length(p - head);
   vec2 lensUv = uv - (uv - uHead) * 0.22 * (1.0 - smoothstep(0.0, uRadius * 1.2, fromHead));
   vec4 clear = photo(toImage(lensUv));
   float rim = smoothstep(radius * 0.5, radius * 0.95, distance) * lens;
 
-  // Lit glass: inside the lens the photo is brighter, warmer and richer, as if backlit.
   float light = uLensLight * (0.75 + 0.5 * uEnergy);
   vec3 lit = straight(clear);
   float litLuma = dot(lit, vec3(0.299, 0.587, 0.114));
@@ -134,14 +129,12 @@ void main() {
   lit += vec3(0.16, 0.11, 0.02) * light * smoothstep(0.2, 0.8, litLuma);
   vec3 clearColor = lit * (1.0 - rim * 0.2);
 
-  // A glossy highlight sits toward the lower right of the head, plus a bright crescent on the rim.
   vec2 lightDir = normalize(vec2(0.55, -0.8));
   vec2 toPixel = (p - head) / max(uRadius, 1e-4);
   float gloss = exp(-dot(toPixel - lightDir * 0.45, toPixel - lightDir * 0.45) * 14.0);
   float crescent = rim * smoothstep(0.2, 0.9, dot(normalize(toPixel + 1e-5), lightDir));
   vec3 specular = vec3(1.0) * (gloss * 0.55 + crescent * 0.35) * light * uHover;
 
-  // A soft halo spills past the lens edge and lifts the frost around it.
   float halo = (1.0 - smoothstep(radius, radius * 2.2, distance)) * uHover * light;
   baseColor = mix(baseColor, baseColor * 1.08 + vec3(0.05, 0.035, 0.0), halo * 0.6);
 
@@ -151,7 +144,6 @@ void main() {
 
   alpha *= smoothstep(uFade.x, uFade.y, toImage(uv).y);
 
-  // Intro: the flower condenses out of the mist, low-noise areas first.
   float revealNoise = fbm(p * 2.5 + 3.7);
   alpha *= smoothstep(revealNoise - 0.2, revealNoise + 0.05, uIntro * 1.3 - 0.1);
 

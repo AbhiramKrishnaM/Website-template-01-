@@ -9,10 +9,8 @@ export interface FlowerSetup {
   tilt: number
 }
 
-// World units for a camera at z=10 with a 30° vertical fov: the view spans y = ±2.68.
 const VIEW_HALF_HEIGHT = 2.68
 
-// Positions the top of each flower's starting pose so that, once open, it matches the reference (0 = top edge).
 function topAt(fraction: number): number {
   return VIEW_HALF_HEIGHT - fraction * VIEW_HALF_HEIGHT * 2
 }
@@ -29,7 +27,6 @@ export const STAGE_CAMERA = { position: [0, 0, 10] as [number, number, number], 
 
 export const DANDELION_SEEDS = ['petal-one', 'petal-two', 'petal-three', 'petal-four', 'petal-five']
 
-// Clones the hierarchy and gives every mesh its own material copies, so per-instance tweaks don't leak.
 export function cloneWithOwnMaterials(source: Object3D): Object3D {
   const copy = source.clone(true)
   copy.traverse((object) => {

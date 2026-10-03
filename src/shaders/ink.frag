@@ -40,11 +40,9 @@ void main() {
   vec2 p = vec2(vUv.x * aspect, vUv.y);
   vec2 origin = vec2(uOrigin.x * aspect, uOrigin.y);
 
-  // The wash spreads radially from the origin; distance is normalised to the farthest corner.
   float reach = max(length(vec2(aspect, 1.0) - origin), length(origin));
   float field = length(p - origin) / reach * 0.75 + fbm(p * 2.5 + uSeed) * 0.45;
 
-  // Remapped so 0 leaves every pixel uncovered and 1 covers the noisiest corner.
   float front = mix(-0.1, 1.35, uProgress);
   float depth = front - field;
 

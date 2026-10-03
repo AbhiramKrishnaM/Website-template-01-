@@ -15,7 +15,6 @@ const FILL_CLASSES = [styles.fillTwo, styles.fillThree, styles.fillFour, styles.
 const CIRCLE_CLASSES = [styles.circleTwo, styles.circleThree, styles.circleFour, styles.circleFive]
 const SCRUB_DESKTOP = 1.2
 const SCRUB_TOUCH = 0.2
-// Timeline units: transition k (to slide k) starts at 2(k-1); the wipe takes 1 unit, then the slide holds for 1.
 const UNITS_PER_SLIDE = 2
 const WIPE_DURATION = 1
 const CARD_SWAP_AT = 0.5
@@ -27,8 +26,6 @@ const DIM_OPACITY = 0.3
 const WORD_DURATION = 1.05
 const WORD_STAGGER_MAX = 0.085
 
-// The wipe grows out of the progress circle for the next slide, from that circle's size to past the farthest corner;
-// the circle itself hides as its wipe starts, so it reads as the circle swelling into the new background.
 function wipeCircle(circle: HTMLElement, sticky: HTMLElement, full: boolean): string {
   const area = sticky.getBoundingClientRect()
   const rect = circle.getBoundingClientRect()
@@ -39,7 +36,6 @@ function wipeCircle(circle: HTMLElement, sticky: HTMLElement, full: boolean): st
   return `circle(${radius}px at ${x}px ${y}px)`
 }
 
-// Spaces stay outside the overflow masks; a trailing space inside an inline-block collapses.
 function Words({ text }: { text: string }) {
   return text.split(' ').map((word, i) => (
     <Fragment key={i}>
@@ -123,7 +119,6 @@ export function Cards() {
         onUpdate: () => {
           const time = tl.time()
           clockRef.current.time = time
-          // The visible card follows the playhead, so jumping or reversing past a swap point can't skip one.
           let current = 0
           for (let k = 1; k < total; k++)
             if (time >= UNITS_PER_SLIDE * (k - 1) + CARD_SWAP_AT) current = k

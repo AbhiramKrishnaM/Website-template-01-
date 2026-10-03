@@ -42,7 +42,6 @@ function approach(current: number, target: number, rate: number, dt: number): nu
   return current + (target - current) * (1 - Math.exp(-rate * dt))
 }
 
-// Touch screens have no cursor, so the lens drifts on its own along a slow figure-eight.
 function idlePath(time: number): [number, number] {
   return [0.5 + 0.16 * Math.sin(time * 0.35), 0.55 + 0.12 * Math.sin(time * 0.7)]
 }

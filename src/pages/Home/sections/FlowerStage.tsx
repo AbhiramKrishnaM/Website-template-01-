@@ -22,14 +22,12 @@ export interface CardsClock {
   time: number
 }
 
-// A wipe circle in the stage canvas's drawing-buffer pixels (origin bottom-left, like gl_FragCoord).
 interface WipeCircle {
   x: number
   y: number
   radius: number
 }
 
-// Timeline units per slide (matches Cards): the wipe into slide i starts at 2(i-1) and takes 1 unit.
 const UNITS_PER_SLIDE = 2
 const WIPE_EDGE_PX = 60
 const WIPE_GRAIN_PX = 3
@@ -155,8 +153,6 @@ function Flower({
         ? smoothstep(FIRST_COLOR[0], FIRST_COLOR[1], time)
         : smoothstep(start + COLOR_AFTER, start + COLOR_AFTER + COLOR_LENGTH, time)
 
-    // Scrub by setting each clip's time and evaluating without advancing; a clip is kept just short of its end
-    // so it never reaches "finished", which would pause it.
     if (duration > 0) {
       const bloom = smoothstep(start + BLOOM_AFTER, start + BLOOM_AFTER + BLOOM_LENGTH, time)
       actions.forEach((action) => {
@@ -165,7 +161,6 @@ function Flower({
       mixer.update(0)
     }
 
-    // Hovering the head kicks a damped spring, so the flower shakes and settles.
     const wobble = shake.current
     if (!reducedMotion) {
       const projected = head.clone().applyMatrix4(group.matrixWorld).project(camera)
@@ -182,7 +177,6 @@ function Flower({
       wobble.angle += wobble.velocity * dt
     }
 
-    // The dandelion holds still until its seeds have landed, so the hand-off from the seed overlay is exact.
     const holdFrom = index === 0 ? 0 : start + 1
     const hold = index === 0 && !landed ? 0 : Math.max(0, time - holdFrom)
     group.position.x = setup.x

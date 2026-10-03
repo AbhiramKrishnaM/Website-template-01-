@@ -11,7 +11,6 @@ export function getLenis(): Lenis | null {
   return lenis
 }
 
-// Matches the reference: smooth scroll on desktop only, native scroll on touch devices.
 export function useSmoothScroll(): void {
   const finePointer = useFinePointer()
   const reducedMotion = useReducedMotion()

@@ -9,7 +9,6 @@ import { useContent, useLang } from '../../../content/useContent'
 import { useReducedMotion } from '../../../hooks/useMediaQuery'
 import styles from './Hero.module.css'
 
-// Smoothed scroll progress (0–1 over the pinned distance) at which each quote line scrambles out.
 const LINE_EXIT = [0.36, 0.5, 0.64, 0.78]
 const DISSOLVE_START = 0.3
 const DISSOLVE_END = 1

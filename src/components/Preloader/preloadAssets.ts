@@ -11,7 +11,6 @@ const FONT_FACES = [
 
 const MAX_WAIT_MS = 12000
 
-// Plain fetches warm the HTTP cache with measurable progress; the GLTF preload then decodes from cache.
 export async function preloadAssets(onProgress: (ratio: number) => void): Promise<void> {
   const tasks: Promise<unknown>[] = [
     ...FONT_FACES.map((font) => document.fonts.load(font)),

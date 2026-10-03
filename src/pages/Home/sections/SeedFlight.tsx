@@ -17,9 +17,6 @@ import { seedFlight } from '../../../three/seedFlight'
 import { StageLights } from '../../../three/StageLights'
 import styles from './SeedFlight.module.css'
 
-// Seeds fall in from above the screen while the hero dissolves, settle at a resting spot (x, y as screen fractions),
-// sink slowly while the intro scrolls past, then the landing seeds fly into their slots on the dandelion.
-// `enter` and `flyFrom` are points in the overall seed progress (0 = start of the fall, 1 = dandelion in place).
 interface Spot {
   x: number
   y: number
@@ -50,7 +47,6 @@ const SPOTS: Spot[] = [
   { x: 0.16, y: 0.7, enter: 0.14, sink: 1.5, tilt: 0.35, variant: 0, lands: false, flyFrom: 1 },
 ]
 
-// The fall starts this many screens before the intro reaches the bottom of the viewport, i.e. during the hero dissolve.
 const LEAD_SCREENS = 0.4
 const ENTRY_LENGTH = 0.18
 const ABOVE_SCREEN_PX = 220
@@ -66,8 +62,6 @@ function smoothstep(edge0: number, edge1: number, value: number): number {
   return t * t * (3 - 2 * t)
 }
 
-// Each dandelion seed is lifted out of the fitted dandelion with its world transform baked in, then re-centred,
-// so placing a holder at `attach` with no rotation reproduces the seed exactly where it sits on the stage.
 function useSeedModels(): SeedModel[] {
   const { scene } = useGLTF(MODELS.dandelion)
   return useMemo(() => {
@@ -134,7 +128,6 @@ function Seeds() {
     const canLand = stage !== null
     seedFlight.progress = canLand ? u : 0
 
-    // Render as if through the flower stage's camera, wherever the stage currently sits on screen.
     const view = camera as PerspectiveCamera
     if (stage) {
       const rect = stage.getBoundingClientRect()
