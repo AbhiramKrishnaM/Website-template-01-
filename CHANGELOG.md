@@ -204,3 +204,7 @@ Entry format:
 ## 2026-10-03 — All code comments removed
 - At the user's request, removed all 46 comment lines from 15 source files (TypeScript and shaders); checks and build still pass
 - `standards.md` section 1 now says "No comments in code"; reasoning and measured values live in `website.md` and `CHANGELOG.md`
+
+## 2026-10-04 — Fix: 404 on refresh in the Vercel deployment
+- Refreshing any route (e.g. `/en`) on Vercel returned 404 because routes exist only in the client-side router
+- Added `vercel.json` rewriting every path without a matching file to `/index.html`; static files (models, images, assets) are still served directly
