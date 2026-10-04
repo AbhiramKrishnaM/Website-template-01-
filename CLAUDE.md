@@ -37,6 +37,15 @@ The automation tab sits in a background window, so the browser pauses animation 
 - Real mouse input doesn't reach the background tab; dispatch synthetic `PointerEvent`s instead and say so when reporting.
 - Run `npm run check` and `npm run build` before reporting; both must be clean with no lint warnings.
 
+## Code style
+
+Write no comments in code (TypeScript, CSS, shaders); the user had all comments removed. Explain through names and named constants, and put reasoning and measured values in `website.md` or `CHANGELOG.md`.
+
+## Deployment
+
+- Deployed on Vercel at https://therapy-template-omega.vercel.app (pushes redeploy automatically).
+- `vercel.json` rewrites every path without a matching file to `/index.html`, so refreshing a client-side route like `/en` works. Keep it when changing routing.
+
 ## Changelog
 
 `CHANGELOG.md` is append-only. After finishing a piece of work, add an entry at the bottom with a shell append (`cat >> CHANGELOG.md <<'EOF'`), in the format shown at the top of the file. A wrong entry is fixed by appending a correction. `.githooks/pre-commit` rejects any commit that alters existing entries; leave it enabled (`git config core.hooksPath .githooks`) and commit with the hook running.
@@ -45,5 +54,5 @@ The automation tab sits in a background window, so the browser pauses animation 
 
 - App code loads models from `public/models/` and glass-flower photos from `public/images/flowers/` (used with O.LA's permission, which the user reports also covers the site's photos).
 - `reference-assets/` holds the untouched originals for study only; app code never imports from it.
-- Some model parts are third-party (see `reference-assets/README.md`). O.LA approved publishing them with changes still to be recorded and applied; keep the site local until that is done.
+- Some model parts are third-party (see `reference-assets/README.md`). O.LA approved publishing them with changes that are still to be recorded and applied; the site is already public, so raise this with the user until it's done.
 - Credit O.LA (https://olhalazarieva.com/) in the footer and in `CREDITS.md`.

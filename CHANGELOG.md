@@ -208,3 +208,7 @@ Entry format:
 ## 2026-10-04 — Fix: 404 on refresh in the Vercel deployment
 - Refreshing any route (e.g. `/en`) on Vercel returned 404 because routes exist only in the client-side router
 - Added `vercel.json` rewriting every path without a matching file to `/index.html`; static files (models, images, assets) are still served directly
+
+## 2026-10-04 — CLAUDE.md: code style and deployment
+- Added "Code style" (no comments in code) and "Deployment" (Vercel URL, `vercel.json` SPA rewrite) sections
+- Assets note updated: the site is public while O.LA's requested changes to the third-party model parts are still pending
