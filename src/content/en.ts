@@ -67,6 +67,50 @@ export const en: Content = {
         },
       ],
     },
+    wishes: {
+      label: 'YOU WANT',
+      heading: 'YOU WANT',
+      note: '(I can help with)',
+      featured: {
+        initial: 'W',
+        number: 'Wish No. 1',
+        title: 'Weight of expectations to lift',
+        subtitle: 'FINDING ROOM TO BREATHE',
+        paragraphs: [
+          'When everyday demands build up, carrying them alone quietly exhausts your spirit and leaves little room for joy.',
+          'Therapy offers a calm, unhurried space to untangle what is truly yours from what was placed upon you by others.',
+          'Together, we set down what is too heavy, creating room to breathe and listen to what you genuinely need.',
+        ],
+      },
+      items: [
+        {
+          initial: 'E',
+          number: 'Wish No. 2',
+          title: 'Ease within your thoughts and inner dialogue',
+        },
+        {
+          initial: 'L',
+          number: 'Wish No. 3',
+          title: 'Lightness and freedom from persistent self-doubt',
+        },
+        {
+          initial: 'L',
+          number: 'Wish No. 4',
+          title: 'Living aligned with your authentic values',
+        },
+        {
+          initial: 'N',
+          number: 'Wish No. 5',
+          title: 'Nurturing relationships rooted in trust and care',
+        },
+        {
+          initial: 'S',
+          number: 'Wish No. 6',
+          title: 'Stepping into calm clarity and quiet resilience',
+        },
+      ],
+      wellnessWord: 'WELLNESS',
+    },
   },
   pages: {
     home: { title: 'Home' },

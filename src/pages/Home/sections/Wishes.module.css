@@ -1,0 +1,290 @@
+.wishes {
+  position: relative;
+  width: 100%;
+  height: 460svh;
+  background-color: var(--bg-blush);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--bg-blush);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+  padding-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  z-index: var(--z-content);
+}
+
+.header {
+  flex-shrink: 0;
+  margin-bottom: var(--space-2);
+}
+
+.gridTrack {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  will-change: transform;
+}
+
+.featuredCard {
+  display: grid;
+  grid-template-columns: auto 1px 1fr;
+  align-items: center;
+  column-gap: var(--space-6);
+  padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--bg-rose);
+  border-radius: 4px;
+  background: rgba(254, 251, 251, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.featuredInitialWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10rem;
+}
+
+.featuredInitial {
+  font-family: var(--font-display);
+  font-size: 13rem;
+  line-height: 0.8;
+  font-weight: 300;
+  color: var(--accent-dark);
+  user-select: none;
+}
+
+.rule {
+  width: 1px;
+  height: 80%;
+  align-self: center;
+  background: var(--bg-rose);
+}
+
+.featuredContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.wishNumber {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+  font-size: var(--text-md);
+}
+
+.featuredTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.featuredSubtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.featuredParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.paragraph {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--quote);
+}
+
+.wishesRowThree {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.wishesRowTwo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  max-width: 66%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--bg-rose);
+  border-radius: 4px;
+  background: rgba(254, 251, 251, 0.7);
+  backdrop-filter: blur(8px);
+  min-height: 8.5rem;
+  overflow: hidden;
+}
+
+.cardInitial {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  font-family: var(--font-display);
+  font-size: 7.5rem;
+  line-height: 0.85;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.22;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+  margin-top: var(--space-1);
+}
+
+.sceneCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wellnessWord {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  user-select: none;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.wellnessLetter {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--numeral);
+  display: inline-block;
+  will-change: transform, opacity;
+  text-shadow: 0 2px 14px rgba(30, 36, 34, 0.45);
+}
+
+.foliageLeft {
+  position: absolute;
+  left: -2rem;
+  bottom: -2rem;
+  width: 22rem;
+  height: 32rem;
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0;
+  filter: blur(16px);
+  will-change: transform, opacity, filter;
+}
+
+.foliageRight {
+  position: absolute;
+  right: -2rem;
+  bottom: -2rem;
+  width: 24rem;
+  height: 36rem;
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0;
+  filter: blur(18px);
+  will-change: transform, opacity, filter;
+}
+
+.creamOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-cream);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.static {
+  position: relative;
+  width: 100%;
+  padding: var(--space-8) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--bg-blush);
+}
+
+@media (max-width: 48rem) {
+  .featuredCard {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-3);
+  }
+
+  .rule {
+    display: none;
+  }
+
+  .featuredInitialWrap {
+    justify-content: flex-start;
+    min-width: unset;
+  }
+
+  .featuredInitial {
+    font-size: 6rem;
+  }
+
+  .wishesRowThree {
+    grid-template-columns: 1fr;
+  }
+
+  .wishesRowTwo {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .wellnessLetter {
+    font-size: 1.25rem;
+  }
+}

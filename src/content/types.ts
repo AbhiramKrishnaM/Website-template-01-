@@ -30,6 +30,24 @@ export interface Content {
       label: string
       slides: { title: string; quote: string; author: string }[]
     }
+    wishes: {
+      label: string
+      heading: string
+      note: string
+      featured: {
+        initial: string
+        number: string
+        title: string
+        subtitle: string
+        paragraphs: string[]
+      }
+      items: {
+        initial: string
+        number: string
+        title: string
+      }[]
+      wellnessWord: string
+    }
   }
   pages: {
     home: { title: string }

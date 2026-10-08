@@ -280,6 +280,16 @@ Analysed: 2026-10-02, desktop Chrome, viewport 1920×992 CSS px.
   - Blurred foliage PNG sprites (`grass.webp`) at the left and right edges, slight parallax.
   - Exit: the word fades, the flower scales up slightly and fades to cream, foliage blurs out.
 
+**Implementation (2026-10-08):**
+
+- Added `src/pages/Home/sections/Wishes.tsx` and `RanunculusScene.tsx`.
+- Pinned sticky container (460svh) with ScrollTrigger scrubbed timeline (1.2s desktop, 0.2s touch).
+- Featured wish card with giant serif initial W (~250px, `--accent-dark`), followed by 3-card and 2-card grids with pale initials E, L, L, N, S.
+- Scroll progress 0.28–0.48: cards blur out (`filter: blur(8px); opacity: 0`), while initials FLIP-tween into centered 28px Cormorant caps `WELLNESS`.
+- Ranunculus 3D scene: fitted ranunculus model with PBR textures, 36 instanced tumbling petals extracted from mesh geometry, 100 drifting dust points, and edge-blurred foliage sprites with parallax.
+- Exit phase: `WELLNESS` fades, flower scales 1.0 → 1.15, cream overlay transitions into Section 10 (`.profile`).
+- Reduced motion fallback: unpinned static card layout without heavy animations.
+
 ### 4.5 Profile teaser (2044px)
 
 - Label "ABOUT ME"; centered portrait (~460×600) with a clip-path reveal upward plus a slight scale 1.1→1.
