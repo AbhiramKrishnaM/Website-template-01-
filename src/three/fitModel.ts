@@ -23,6 +23,14 @@ export const FLOWERS: FlowerSetup[] = [
   { model: 'artichoke', height: 3.8, top: topAt(0.35), x: 0, tilt: 0 },
 ]
 
+export const RANUNCULUS_SETUP: FlowerSetup = {
+  model: 'ranunculus',
+  height: 4.6,
+  top: topAt(0.36),
+  x: 0,
+  tilt: 0,
+}
+
 export const STAGE_CAMERA = { position: [0, 0, 10] as [number, number, number], fov: 30 }
 
 export const DANDELION_SEEDS = ['petal-one', 'petal-two', 'petal-three', 'petal-four', 'petal-five']

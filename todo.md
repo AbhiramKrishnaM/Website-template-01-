@@ -109,15 +109,15 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 
 ## 9. Home — wishes → WELLNESS → ranunculus
 
-- [ ] Featured wish card: giant initial, vertical rule, heading + paragraphs
-- [ ] Grid of 5 more wishes with pale initials
-- [ ] Pick our own 6 items whose initials spell a word
-- [ ] FLIP the initials from the cards into the centered word
-- [ ] Ranunculus scene: model + PBR textures, slow rotation
-- [ ] Falling petals (instanced, tumbling)
-- [ ] Floating dust points
-- [ ] Blurred foliage sprites at the edges with parallax
-- [ ] Exit: word fades, flower scales up and fades to cream
+- [x] Featured wish card: giant initial, vertical rule, heading + paragraphs
+- [x] Grid of 5 more wishes with pale initials
+- [x] Pick our own 6 items whose initials spell a word
+- [x] FLIP the initials from the cards into the centered word
+- [x] Ranunculus scene: model + PBR textures, slow rotation
+- [x] Falling petals (instanced, tumbling)
+- [x] Floating dust points
+- [x] Blurred foliage sprites at the edges with parallax
+- [x] Exit: word fades, flower scales up and fades to cream
 
 ## 10. Home — profile + accordion
 

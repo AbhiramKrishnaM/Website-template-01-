@@ -212,3 +212,13 @@ Entry format:
 ## 2026-10-04 — CLAUDE.md: code style and deployment
 - Added "Code style" (no comments in code) and "Deployment" (Vercel URL, `vercel.json` SPA rewrite) sections
 - Assets note updated: the site is public while O.LA's requested changes to the third-party model parts are still pending
+
+## 2026-10-08 — Home: Wishes → WELLNESS → Ranunculus (todo section 9)
+- Added `src/pages/Home/sections/Wishes.tsx`, `Wishes.module.css`, and `RanunculusScene.tsx`
+- Pinned 460svh section with ScrollTrigger scrubbed timeline (1.2s desktop, 0.2s touch)
+- Featured wish card with giant serif initial W (13rem, `--accent-dark`), followed by 3-card and 2-card grids with pale initials E, L, L, N, S
+- Scroll progress 0.22–0.48: cards blur out (`filter: blur(8px); opacity: 0`), while initials FLIP-tween into centered 28px Cormorant caps `WELLNESS`
+- 3D Ranunculus scene: fitted ranunculus model with PBR textures, 36 instanced tumbling petals extracted from mesh geometry, 100 drifting dust points, and edge-blurred foliage sprites with parallax
+- Exit phase: `WELLNESS` fades, flower scales 1.0 → 1.15, cream overlay transitions into Section 10 (`.profile`)
+- Reduced motion fallback: unpinned static card layout without heavy animations
+- Updated `content/types.ts`, `en.ts`, and `uk.ts` with therapeutic copy for the wishes
