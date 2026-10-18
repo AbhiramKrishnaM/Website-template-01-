@@ -119,6 +119,58 @@ Rough pace: 1–2 sections per week. Sections 1–4 are the foundation; do them 
 - [x] Blurred foliage sprites at the edges with parallax
 - [x] Exit: word fades, flower scales up and fades to cream
 
+### 9b. Wishes rebuild to match the reference (measured 2026-10-18, see `website.md` §4.4 "Confirmed from the reference")
+
+The current `Wishes.tsx` is wrong: bordered cards, the featured card is a static block, all items visible at once, and the letters never "fly". The reference is a borderless **stage + hover selector** that is pinned, then the letters fly into WELLNESS.
+
+Layout (desktop ≥769px):
+
+- [ ] Drop the card borders/boxes; plain text on the cream `#faf5ee` background
+- [ ] Heading row: arrow + "YOU WANT" (shared section heading) + italic note, then a **pin track 170dvh** with a **sticky 100dvh pin** inside (`flex column, space-between`)
+- [ ] Stage: grid `275rem | 560rem`, 900rem wide, 440rem tall, centred, nudged `left:-30rem`
+- [ ] Letter window (275rem wide, `overflow:hidden`) holds all six giant letters stacked; letter 330rem Cormorant `#603d3b`, `letter-spacing:-.08em`, right-aligned with a per-letter `right` offset (W −90rem, others −16…−72rem) so the glyph is **cut off by the window edge at the divider**
+- [ ] 1px divider at `left:275rem`, colour `hsla(3,15%,50%,.48)`
+- [ ] Panels: all six stacked absolutely in column 2 (`padding-left:68rem`), only the active one visible; kicker 14rem italic → title 38rem caps `#603d3b` → lead 18rem Inter caps → copy paragraphs 18rem
+- [ ] Desires row under the stage (`margin-top:auto`): 12-col grid, gap 24/22rem, items 2–4 at cols 1/5/9 span 4, items 5–6 at cols 2/8 span 4
+- [ ] Each desire is a `<button>`: small pale letter (64rem, `hsla(0,9%,68%,.28)`) above a block with a 1px left rule `#e5dad4`, italic "Wish No. n" kicker (14rem) and caps title (17rem)
+- [ ] Desire hover/focus/active: letter → `#603d3b` and lifts 5rem (`.55s cubic-bezier(.22,1,.36,1)`), title → `#936e6c` (`.45s`)
+
+Hover selector (desktop):
+
+- [ ] `mouseenter` / `focus` / `click` on desire n swaps the stage to panel n; leaving the desires grid (mouseleave, or blur out of it) returns to panel 0
+- [ ] Swap timeline (desktop values; mobile in brackets): old letter `xPercent 0→108` + fade, 1.15s [.45] `power2.inOut`; new letter `xPercent 108→0`, 1.35s [.55], starts at .12s [.05]
+- [ ] Old panel items fade + `blur(3px)` + `x:20`, .4s [.22] `power2.in`, stagger .025 [.015]; panel hidden at .44s
+- [ ] New panel items from `opacity 0, blur(4px), x:-24` to clear, .9s [.45] `power3.out`, stagger .085 [.04], starting at .42s [.18]
+- [ ] Inactive letters parked at `xPercent:108, autoAlpha:0`; reduced motion swaps instantly
+- [ ] While scrolling down past 65% of the pin track, force back to panel 0 (shorter return: .75s / .85s / .32s / .65s) and lock hovering until scrolled back
+
+Fly into WELLNESS (desktop):
+
+- [ ] Wellness track 300dvh with a sticky 100dvh screen; centred target word: one span per char, 26rem white Cormorant caps with text-shadow `0 2rem 22rem rgba(45,12,22,.45), 0 1rem 6rem rgba(30,8,16,.3)`
+- [ ] Our word: the 6 item initials are "slot" chars, the extra letters are "filler" chars (reference: W·E·L·L·N·E·S·S, the two E's are fillers)
+- [ ] Fly timeline scrubbed (`scrub .5`) from pin-track `bottom bottom` over `+= innerHeight`; measure each slot's offset + scale (`target fontSize / source fontSize`) and re-measure on refresh / `document.fonts.ready`
+- [ ] Stage letter: y + scale over 1 unit `power2.inOut`; x as keyframes (first `letterOffset − 5rem` in .22 `sine.inOut`, then to target .78 `power2.inOut`); window `overflow` → visible at .22; colour → white .25–1.0; text-shadow fades in from .5
+- [ ] Desire letters: each starts at `.03 + .02·i` and runs `1 − start`, flying with colour → white and the shadow
+- [ ] Panel text blurs out (`blur(10px)`, .35, stagger .02), desire content blurs out (`blur(8px)`, from .02), divider fades (.28), heading blurs out (`blur(6px)`, .32)
+- [ ] Fillers fade in from .45: `scale .8→1, blur(4px)→0`, .5 each, stagger .1, `power2.out`
+- [ ] At 1.0 swap: hide the flown letters, show the real target chars; add a `--flying` class (no pointer events, no CSS transitions) while progress > 0; scrolling back to 0 resets everything
+- [ ] Exit inside the wellness track (`top top → bottom bottom`, `scrub .5`): target chars blur out (`blur(14px)`, `scale 1.04`, random stagger amount .05) at .28–.56; flower exit progress runs .3–.88 `power1.inOut`
+
+Ranunculus tie-in (adjust existing `RanunculusScene.tsx`):
+
+- [ ] Flower lives inside the wellness screen behind the word; canvas masked with a vertical fade (transparent top 0–10%, solid to 66%, fading out by 99%)
+- [ ] Driven by fly progress: canvas opacity `smoothstep(p, 0, .45)`, canvas blur `13px·(1 − p/.94)^1.4` → none, stem bend −.15 → 0, head tilt .08 rad → 0, camera target y −.09 → 0 (all damped, λ≈8)
+- [ ] Exit progress (smootherstep): flower moves toward camera (z +6.8) and down (y −5), turns y +1.6 rad, scales `1 + p^1.2·1.35`, canvas fades out over .75–1
+- [ ] Idle sway + cursor-velocity tilt, reduced as exit progresses
+
+Mobile (≤768px):
+
+- [ ] Separate accordion list instead of the stage: tap toggles one item; collapsed letter 36px pale in a 52px column, expanded letter 86px `hsla(3,15%,50%,.5)` with a 1px vertical rule growing `scaleY 0→1`
+- [ ] Items 3 and 5 are staggered (`translateX(46px)` when collapsed); 165px horizontal divider between items
+- [ ] Expand: `grid-template-rows 0fr→1fr` 1.4s, titles cross-fade with blur, lead then paragraphs blur in with delays .2/.38/.56/.74s (1.3s, `cubic-bezier(.22,1,.36,1)`); `ScrollTrigger.refresh()` 1.45s after toggling
+- [ ] No fly on mobile: target chars blur/scale/rise in (`blur(8px), scale .9, y 10` → clear, stagger .06, `scrub 1.2`, `top 75% → center center`)
+- [ ] Remove the old `Wishes.tsx` card markup and FLIP code once the rebuild lands; update `website.md` and `CHANGELOG.md`
+
 ## 10. Home — profile + accordion
 
 - [ ] Profile: section label, portrait clip-path reveal

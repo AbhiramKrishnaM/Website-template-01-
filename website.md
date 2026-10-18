@@ -280,6 +280,16 @@ Analysed: 2026-10-02, desktop Chrome, viewport 1920×992 CSS px.
   - Blurred foliage PNG sprites (`grass.webp`) at the left and right edges, slight parallax.
   - Exit: the word fades, the flower scales up slightly and fades to cream, foliage blurs out.
 
+**Confirmed from the reference (2026-10-18, CSS + bundle + live at 1920×987):**
+
+- Units: the reference sizes everything in `rem` scaled to the viewport, 1rem ≈ vw/1688 (1.137px at 1920 wide).
+- Parts A/B above are wrong. There are no cards: the section is a **stage + hover selector**. The stage shows one wish at a time (giant letter clipped by its window at the divider, panel text on the right); the five other wishes sit underneath as small buttons. Hovering, focusing or clicking one slides its letter in from the right and staggers its panel text in; leaving the row returns to wish 1.
+- Structure: `.want` (padding-top 110rem) → heading → `.want__pin-track` 170dvh with a sticky 100dvh `.want__pin` → `.want__wellness-track` 300dvh with a sticky 100dvh `.want__wellness-screen` holding the ranunculus canvas and the target word.
+- Fly: once the pin track's bottom reaches the viewport bottom, a timeline scrubbed over one viewport (`scrub .5`) moves the stage letter and the five desire letters to their slots in the target word (scale = target/source font size), turning them white with a shadow while all other text blurs out; the filler letters (the two E's in WELLNESS) fade in from .45. The ranunculus fades and un-blurs with the same progress.
+- Measured at 1920: section top 11376, pin track 1678px tall, stage 1024×500, desire rows at +597 and +753 from the track top, wellness track 2961px.
+- Mobile is a separate accordion list with no fly.
+- Full timings, eases and sizes are in `todo.md` §9b.
+
 **Implementation (2026-10-08):**
 
 - Added `src/pages/Home/sections/Wishes.tsx` and `RanunculusScene.tsx`.

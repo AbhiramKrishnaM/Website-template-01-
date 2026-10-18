@@ -222,3 +222,8 @@ Entry format:
 - Exit phase: `WELLNESS` fades, flower scales 1.0 → 1.15, cream overlay transitions into Section 10 (`.profile`)
 - Reduced motion fallback: unpinned static card layout without heavy animations
 - Updated `content/types.ts`, `en.ts`, and `uk.ts` with therapeutic copy for the wishes
+
+## 2026-10-18 — Wishes: reference re-measured, rebuild planned
+- Studied the reference `.want` section (CSS, JS bundle, live page); the 2026-10-08 card layout does not match it
+- Added `todo.md` §9b with the stage + hover selector, the scroll "fly" into WELLNESS, the ranunculus tie-in and the mobile accordion, with measured timings and sizes
+- Added "Confirmed from the reference" notes to `website.md` §4.4; no code changed
